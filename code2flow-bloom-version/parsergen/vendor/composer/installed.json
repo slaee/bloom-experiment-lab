@@ -2,8 +2,8 @@
     "packages": [
         {
             "name": "nikic/php-parser",
-            "version": "v5.0.0",
-            "version_normalized": "5.0.0.0",
+            "version": "v4.0.0",
+            "version_normalized": "4.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
@@ -35,7 +35,7 @@
                     "dev-master": "5.0-dev"
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "PhpParser\\": "lib/PhpParser"
