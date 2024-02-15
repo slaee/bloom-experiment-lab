@@ -1,0 +1,68 @@
+{
+    "variables": {
+        "a": {
+            "type": "Identifier",
+            "start": 4,
+            "end": 5,
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 4
+                },
+                "end": {
+                    "line": 1,
+                    "column": 5
+                }
+            },
+            "name": "a"
+        },
+        "url": {
+            "type": "Identifier",
+            "start": 117,
+            "end": 120,
+            "loc": {
+                "start": {
+                    "line": 9,
+                    "column": 4
+                },
+                "end": {
+                    "line": 9,
+                    "column": 7
+                }
+            },
+            "name": "url"
+        },
+        "b": {
+            "type": "Identifier",
+            "start": 158,
+            "end": 159,
+            "loc": {
+                "start": {
+                    "line": 10,
+                    "column": 4
+                },
+                "end": {
+                    "line": 10,
+                    "column": 5
+                }
+            },
+            "name": "b"
+        },
+        "sql": {
+            "type": "Identifier",
+            "start": 193,
+            "end": 196,
+            "loc": {
+                "start": {
+                    "line": 11,
+                    "column": 4
+                },
+                "end": {
+                    "line": 11,
+                    "column": 7
+                }
+            },
+            "name": "sql"
+        }
+    }
+}
