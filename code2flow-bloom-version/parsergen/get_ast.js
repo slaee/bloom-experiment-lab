@@ -4,8 +4,16 @@ const {Parser} = require("acorn")
 const sourceType = process.argv[2]
 
 const src = fs.readFileSync(process.argv[3], 'utf8')
-const tree = Parser.parse(src, {'locations': true, 'sourceType': sourceType,
-                                'ecmaVersion': '2020'})
+
+let tree;
+try {
+    tree = Parser.parse(src, {'locations': true, 'sourceType': sourceType,
+                                'ecmaVersion': 'latest'})
+} catch (e) {
+    process.stderr.write(e.message)
+    process.exit(1)
+}
+
 
 // process.stdout.write(JSON.stringify(tree))
 
@@ -27,4 +35,18 @@ function walk(node, parent) {
 
 walk(tree)
 
-process.stdout.write(variables.toString())
+// remove any duplicates
+const uniqueVariables = new Set(variables)
+// remove all nulls
+uniqueVariables.delete(null)
+uniqueVariables.delete('')
+
+let i = 0
+uniqueVariables.forEach(v => {
+    if (i === uniqueVariables.size - 1) {
+        process.stdout.write(v)
+        return
+    }
+    process.stdout.write(v + ',')
+    i++
+})

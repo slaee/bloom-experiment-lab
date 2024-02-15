@@ -9,11 +9,13 @@ $code = file_get_contents($argv[1]);
 
 $parser = (new ParserFactory())->createForNewestSupportedVersion();
 
-
 function walk($node) {
     global $variables;
 
+    print_r($node);
+
     if ($node instanceof PhpParser\Node\Expr\ArrayDimFetch) {
+        print "ArrayDimFetch: ";
         $variables[] = '$'.$node->var->name."['".$node->dim->value."']";
     }
 

@@ -1,15 +1,54 @@
-let a = 'Simple String';
-function query(a) {
-    console.log(a)
-}
-query(a);
+const express = require('express');
+const crypto = require('crypto');
+
+const app = express();
+
+const db = require('better-sqlite3')('db.sqlite3');
+db.exec(`DROP TABLE IF EXISTS users;`);
+db.exec(`CREATE TABLE users(
+    id INTEGER PRIMARY KEY,
+    username TEXT,
+    password TEXT
+);`);
+
+const FLAG = process.env.FLAG || "dice{test_flag}";
+const PORT = process.env.PORT || 3000;
+
+const users = [...Array(100_000)].map(() => ({ user: `user-${crypto.randomUUID()}`, pass: crypto.randomBytes(8).toString("hex") }));
+
+db.exec(`INSERT INTO users (id, username, password) VALUES ${users.map((u,i) => `(${i}, '${u.user}', '${u.pass}')`).join(", ")}`);
+
+const isAdmin = {};
+const newAdmin = users[Math.floor(Math.random() * users.length)];
+isAdmin[newAdmin.user] = true;
 
 
-// read from query param in url q=
-let url = new URL(window.location.href);
-let b = url.searchParams.get("q");
-let sql = `SELECT * FROM table WHERE id = ${b}`;
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
 
-function SQLQuery(sql) {
-    console.log(sql)
-}
+app.post("/api/login", (req, res) => {
+    console.log(isAdmin)
+    const { user, pass } = req.body;
+    console.log("[REQUEST BODY] : ", req.body)
+
+    const query = `SELECT id FROM users WHERE username = '${user}' AND password = '${pass}';`;
+    try {
+        const id = db.prepare(query).get()?.id;
+        console.log(query, "[ID] : ", id)
+
+        if (!id) {
+            return res.redirect("/?message=Incorrect username or password");
+        }
+        
+        if (users[id] && isAdmin[user]) {
+            console.log("Bypassing login...")
+            return res.redirect("/?flag=" + encodeURIComponent(FLAG));
+        }
+        return res.redirect("/?message=This system is currently only available to admins...");
+    }
+    catch {
+        return res.redirect("/?message=Nice try...");
+    }
+});
+
+app.listen(PORT, () => console.log(`web/funnylogin listening on port ${PORT}`));
