@@ -10,7 +10,6 @@ const tree = Parser.parse(src, {'locations': true, 'sourceType': sourceType,
 // process.stdout.write(JSON.stringify(tree))
 
 const variables = []
-const scopes = []
 
 function walk(node, parent) {
     if (node.type === 'VariableDeclaration') {
@@ -23,10 +22,6 @@ function walk(node, parent) {
         if (node[key] && typeof node[key] === 'object') {
             walk(node[key], node)
         }
-    }
-
-    if (node.type === 'BlockStatement' || node.type === 'FunctionDeclaration' || node.type === 'FunctionExpression' || node.type === 'Program') {
-        scopes.pop()
     }
 }
 
