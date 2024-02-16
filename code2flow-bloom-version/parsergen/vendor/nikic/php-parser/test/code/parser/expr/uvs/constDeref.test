@@ -21,12 +21,15 @@ __FUNCTION__[0];
 __FUNCTION__->length;
 __FUNCIONT__->length();
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_PropertyFetch(
             var: Expr_ConstFetch(
                 name: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
             )
             name: Identifier(
@@ -38,7 +41,9 @@ array(
         expr: Expr_MethodCall(
             var: Expr_ConstFetch(
                 name: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
             )
             name: Identifier(
@@ -52,10 +57,12 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_ConstFetch(
                 name: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -66,18 +73,20 @@ array(
                 var: Expr_ArrayDimFetch(
                     var: Expr_ConstFetch(
                         name: Name(
-                            name: A
+                            parts: array(
+                                0: A
+                            )
                         )
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 0
                     )
                 )
-                dim: Scalar_Int(
+                dim: Scalar_LNumber(
                     value: 1
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 2
             )
         )
@@ -86,10 +95,12 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_ConstFetch(
                 name: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -98,13 +109,15 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -115,21 +128,23 @@ array(
                 var: Expr_ArrayDimFetch(
                     var: Expr_ClassConstFetch(
                         class: Name(
-                            name: A
+                            parts: array(
+                                0: A
+                            )
                         )
                         name: Identifier(
                             name: B
                         )
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 0
                     )
                 )
-                dim: Scalar_Int(
+                dim: Scalar_LNumber(
                     value: 1
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 2
             )
         )
@@ -138,13 +153,15 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -153,7 +170,9 @@ array(
         expr: Expr_PropertyFetch(
             var: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
@@ -168,7 +187,9 @@ array(
         expr: Expr_MethodCall(
             var: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
@@ -185,7 +206,9 @@ array(
         expr: Expr_ClassConstFetch(
             class: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
@@ -200,7 +223,9 @@ array(
         expr: Expr_StaticPropertyFetch(
             class: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
@@ -215,7 +240,9 @@ array(
         expr: Expr_StaticCall(
             class: Expr_ClassConstFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: Identifier(
                     name: B
@@ -232,7 +259,7 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Scalar_MagicConst_Function(
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -250,7 +277,9 @@ array(
         expr: Expr_MethodCall(
             var: Expr_ConstFetch(
                 name: Name(
-                    name: __FUNCIONT__
+                    parts: array(
+                        0: __FUNCIONT__
+                    )
                 )
             )
             name: Identifier(

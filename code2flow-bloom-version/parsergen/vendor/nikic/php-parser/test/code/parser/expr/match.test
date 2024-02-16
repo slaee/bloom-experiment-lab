@@ -7,17 +7,18 @@ echo match (1) {
     1 => 'Bar',
 };
 -----
+!!php7
 array(
     0: Stmt_Echo(
         exprs: array(
             0: Expr_Match(
-                cond: Scalar_Int(
+                cond: Scalar_LNumber(
                     value: 1
                 )
                 arms: array(
                     0: MatchArm(
                         conds: array(
-                            0: Scalar_Int(
+                            0: Scalar_LNumber(
                                 value: 0
                             )
                         )
@@ -27,7 +28,7 @@ array(
                     )
                     1: MatchArm(
                         conds: array(
-                            0: Scalar_Int(
+                            0: Scalar_LNumber(
                                 value: 1
                             )
                         )
@@ -48,6 +49,7 @@ $value = match (1) {
     0, 1 => 'Foo',
 };
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Assign(
@@ -55,16 +57,19 @@ array(
                 name: value
             )
             expr: Expr_Match(
-                cond: Scalar_Int(
+                cond: Scalar_LNumber(
                     value: 1
                 )
                 arms: array(
                     0: MatchArm(
                         conds: array(
-                            0: Scalar_Int(
+                            0: Scalar_LNumber(
                                 value: 0
+                                comments: array(
+                                    0: // list of conditions
+                                )
                             )
-                            1: Scalar_Int(
+                            1: Scalar_LNumber(
                                 value: 1
                             )
                         )
@@ -87,6 +92,7 @@ $result = match ($operator) {
     BinaryOperator::ADD => $lhs + $rhs,
 };
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Assign(
@@ -102,7 +108,9 @@ array(
                         conds: array(
                             0: Expr_ClassConstFetch(
                                 class: Name(
-                                    name: BinaryOperator
+                                    parts: array(
+                                        0: BinaryOperator
+                                    )
                                 )
                                 name: Identifier(
                                     name: ADD
@@ -131,6 +139,7 @@ $value = match ($char) {
     default => 'default'
 };
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Assign(
@@ -144,7 +153,7 @@ array(
                 arms: array(
                     0: MatchArm(
                         conds: array(
-                            0: Scalar_Int(
+                            0: Scalar_LNumber(
                                 value: 1
                             )
                         )
@@ -171,6 +180,7 @@ $value = match (1) {
     default, => 'Bar',
 };
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Assign(
@@ -178,16 +188,16 @@ array(
                 name: value
             )
             expr: Expr_Match(
-                cond: Scalar_Int(
+                cond: Scalar_LNumber(
                     value: 1
                 )
                 arms: array(
                     0: MatchArm(
                         conds: array(
-                            0: Scalar_Int(
+                            0: Scalar_LNumber(
                                 value: 0
                             )
-                            1: Scalar_Int(
+                            1: Scalar_LNumber(
                                 value: 1
                             )
                         )

@@ -12,7 +12,9 @@ array(
         expr: Expr_PropertyFetch(
             var: Expr_New(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 args: array(
                 )
@@ -26,7 +28,9 @@ array(
         expr: Expr_MethodCall(
             var: Expr_New(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 args: array(
                 )
@@ -42,7 +46,9 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_New(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 args: array(
                 )
@@ -57,7 +63,9 @@ array(
             var: Expr_ArrayDimFetch(
                 var: Expr_New(
                     class: Name(
-                        name: A
+                        parts: array(
+                            0: A
+                        )
                     )
                     args: array(
                     )

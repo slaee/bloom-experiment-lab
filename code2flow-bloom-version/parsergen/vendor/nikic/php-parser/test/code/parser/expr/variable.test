@@ -9,6 +9,7 @@ $$a;
 $$$a;
 $$a['b'];
 -----
+!!php5
 array(
     0: Stmt_Expression(
         expr: Expr_Variable(
@@ -26,7 +27,9 @@ array(
         expr: Expr_Variable(
             name: Expr_FuncCall(
                 name: Name(
-                    name: foo
+                    parts: array(
+                        0: foo
+                    )
                 )
                 args: array(
                 )
@@ -50,14 +53,14 @@ array(
         )
     )
     5: Stmt_Expression(
-        expr: Expr_ArrayDimFetch(
-            var: Expr_Variable(
-                name: Expr_Variable(
+        expr: Expr_Variable(
+            name: Expr_ArrayDimFetch(
+                var: Expr_Variable(
                     name: a
                 )
-            )
-            dim: Scalar_String(
-                value: b
+                dim: Scalar_String(
+                    value: b
+                )
             )
         )
     )

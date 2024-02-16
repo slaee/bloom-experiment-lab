@@ -11,6 +11,7 @@ class Point {
     ) {}
 }
 -----
+!!php7
 array(
     0: Stmt_Class(
         attrGroups: array(
@@ -26,7 +27,7 @@ array(
             0: Stmt_ClassMethod(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 byRef: false
                 name: Identifier(
                     name: __construct
@@ -35,7 +36,7 @@ array(
                     0: Param(
                         attrGroups: array(
                         )
-                        flags: PUBLIC (1)
+                        flags: MODIFIER_PUBLIC (1)
                         type: Identifier(
                             name: float
                         )
@@ -44,14 +45,14 @@ array(
                         var: Expr_Variable(
                             name: x
                         )
-                        default: Scalar_Float(
+                        default: Scalar_DNumber(
                             value: 0
                         )
                     )
                     1: Param(
                         attrGroups: array(
                         )
-                        flags: PROTECTED (2)
+                        flags: MODIFIER_PROTECTED (2)
                         type: Identifier(
                             name: array
                         )
@@ -68,7 +69,7 @@ array(
                     2: Param(
                         attrGroups: array(
                         )
-                        flags: PRIVATE (4)
+                        flags: MODIFIER_PRIVATE (4)
                         type: Identifier(
                             name: string
                         )
@@ -84,7 +85,7 @@ array(
                     3: Param(
                         attrGroups: array(
                         )
-                        flags: PUBLIC | READONLY (65)
+                        flags: MODIFIER_PUBLIC | MODIFIER_READONLY (65)
                         type: Identifier(
                             name: int
                         )
@@ -93,7 +94,7 @@ array(
                         var: Expr_Variable(
                             name: a
                         )
-                        default: Scalar_Int(
+                        default: Scalar_LNumber(
                             value: 0
                         )
                     )

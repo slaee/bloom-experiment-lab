@@ -15,12 +15,15 @@ id(['udef', 'id'])[1]()('var_dump')(5);
 ('i' . 'd')()('var_dump')(13);
 '\id'('var_dump')(14);
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_FuncCall(
             name: Expr_FuncCall(
                 name: Name(
-                    name: id
+                    parts: array(
+                        0: id
+                    )
                 )
                 args: array(
                     0: Arg(
@@ -36,7 +39,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 1
                     )
                     byRef: false
@@ -50,7 +53,9 @@ array(
             name: Expr_FuncCall(
                 name: Expr_FuncCall(
                     name: Name(
-                        name: id
+                        parts: array(
+                            0: id
+                        )
                     )
                     args: array(
                         0: Arg(
@@ -77,7 +82,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 2
                     )
                     byRef: false
@@ -92,7 +97,9 @@ array(
                 name: Expr_FuncCall(
                     name: Expr_FuncCall(
                         name: Name(
-                            name: id
+                            parts: array(
+                                0: id
+                            )
                         )
                         args: array(
                         )
@@ -114,7 +121,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 4
                     )
                     byRef: false
@@ -130,14 +137,16 @@ array(
                     name: Expr_ArrayDimFetch(
                         var: Expr_FuncCall(
                             name: Name(
-                                name: id
+                                parts: array(
+                                    0: id
+                                )
                             )
                             args: array(
                                 0: Arg(
                                     name: null
                                     value: Expr_Array(
                                         items: array(
-                                            0: ArrayItem(
+                                            0: Expr_ArrayItem(
                                                 key: null
                                                 value: Scalar_String(
                                                     value: udef
@@ -145,7 +154,7 @@ array(
                                                 byRef: false
                                                 unpack: false
                                             )
-                                            1: ArrayItem(
+                                            1: Expr_ArrayItem(
                                                 key: null
                                                 value: Scalar_String(
                                                     value: id
@@ -160,7 +169,7 @@ array(
                                 )
                             )
                         )
-                        dim: Scalar_Int(
+                        dim: Scalar_LNumber(
                             value: 1
                         )
                     )
@@ -181,7 +190,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 5
                     )
                     byRef: false
@@ -249,7 +258,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 8
                     )
                     byRef: false
@@ -286,13 +295,15 @@ array(
                                             )
                                             default: Expr_ConstFetch(
                                                 name: Name(
-                                                    name: null
+                                                    parts: array(
+                                                        0: null
+                                                    )
                                                 )
                                             )
                                         )
                                     )
                                     uses: array(
-                                        0: ClosureUse(
+                                        0: Expr_ClosureUse(
                                             var: Expr_Variable(
                                                 name: f
                                             )
@@ -338,7 +349,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 9
                     )
                     byRef: false
@@ -355,7 +366,7 @@ array(
                         name: Expr_FuncCall(
                             name: Expr_Array(
                                 items: array(
-                                    0: ArrayItem(
+                                    0: Expr_ArrayItem(
                                         key: null
                                         value: Expr_Variable(
                                             name: obj
@@ -363,7 +374,7 @@ array(
                                         byRef: false
                                         unpack: false
                                     )
-                                    1: ArrayItem(
+                                    1: Expr_ArrayItem(
                                         key: null
                                         value: Scalar_String(
                                             value: id
@@ -412,7 +423,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 10
                     )
                     byRef: false
@@ -457,7 +468,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 12
                     )
                     byRef: false
@@ -495,7 +506,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 13
                     )
                     byRef: false
@@ -524,7 +535,7 @@ array(
             args: array(
                 0: Arg(
                     name: null
-                    value: Scalar_Int(
+                    value: Scalar_LNumber(
                         value: 14
                     )
                     byRef: false

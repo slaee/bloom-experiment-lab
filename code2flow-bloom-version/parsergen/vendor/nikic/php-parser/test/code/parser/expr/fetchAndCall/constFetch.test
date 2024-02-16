@@ -12,14 +12,18 @@ array(
     0: Stmt_Expression(
         expr: Expr_ConstFetch(
             name: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
         )
     )
     1: Stmt_Expression(
         expr: Expr_ClassConstFetch(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
             name: Identifier(
                 name: B
@@ -29,7 +33,9 @@ array(
     2: Stmt_Expression(
         expr: Expr_ClassConstFetch(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
             name: Identifier(
                 name: class

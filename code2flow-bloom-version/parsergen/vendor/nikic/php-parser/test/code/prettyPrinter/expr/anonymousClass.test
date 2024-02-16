@@ -12,6 +12,7 @@ new class($a) extends A {
 };
 new readonly class {};
 -----
+!!php7
 new class
 {
 };

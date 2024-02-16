@@ -38,27 +38,12 @@ STR
 );
 
 function test() {
-    <<<'STR'
-    STR;
-    <<<'STR'
-    Foo
-        Bar
-            Baz
-    STR;
-    <<<STR
-    STR;
     <<<STR
 Foo
-Bar
 STR;
     <<<STR
     Bar
-        Baz
-    STR;
-    <<<STR
-    $bar
-        $baz
-    STR;
+STR;
 }
 -----
 <<<'STR'
@@ -85,52 +70,17 @@ a{$b}
 STR;
 call(<<<STR
 A
-STR, <<<STR
-B
-STR);
-function test()
-{
-    <<<'STR'
-    STR;
-    <<<'STR'
-    Foo
-        Bar
-            Baz
-    STR;
-    <<<STR
-    STR;
-    <<<STR
-    Foo
-    Bar
-    STR;
-    <<<STR
-    Bar
-        Baz
-    STR;
-    <<<STR
-    {$bar}
-        {$baz}
-    STR;
-}
------
-<?php
-if (1) {
-    foo(<<<STR
-abc
-STR
-    , <<<STR
-abc
-STR
-    );
-}
------
-!!version=7.2
-if (1) {
-    foo(<<<STR
-abc
 STR
 , <<<STR
-abc
+B
 STR
 );
+function test()
+{
+    <<<STR
+Foo
+STR;
+    <<<STR
+    Bar
+STR;
 }

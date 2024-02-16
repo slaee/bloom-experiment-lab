@@ -9,10 +9,11 @@ use PhpParser\Node\Attribute;
 use PhpParser\Node\AttributeGroup;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
-use PhpParser\Node\Scalar\Int_;
+use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Stmt;
 
-class EnumTest extends \PHPUnit\Framework\TestCase {
+class EnumTest extends \PHPUnit\Framework\TestCase
+{
     protected function createEnumBuilder($class) {
         return new Enum_($class);
     }
@@ -109,7 +110,7 @@ DOC;
     public function testAddAttribute() {
         $attribute = new Attribute(
             new Name('Attr'),
-            [new Arg(new Int_(1), false, false, [], new Identifier('name'))]
+            [new Arg(new LNumber(1), false, false, [], new Identifier('name'))]
         );
         $attributeGroup = new AttributeGroup([$attribute]);
 
@@ -129,9 +130,9 @@ DOC;
 
     public function testInvalidStmtError() {
         $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Unexpected node of type "PropertyItem"');
+        $this->expectExceptionMessage('Unexpected node of type "Stmt_PropertyProperty"');
         $this->createEnumBuilder('Test')
-            ->addStmt(new Node\PropertyItem('property'))
+            ->addStmt(new Stmt\PropertyProperty('property'))
         ;
     }
 

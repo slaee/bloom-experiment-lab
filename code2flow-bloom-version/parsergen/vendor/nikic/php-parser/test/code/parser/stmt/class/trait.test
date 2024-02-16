@@ -32,7 +32,7 @@ array(
             0: Stmt_ClassMethod(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 byRef: false
                 name: Identifier(
                     name: a
@@ -59,7 +59,9 @@ array(
             0: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        name: C
+                        parts: array(
+                            0: C
+                        )
                     )
                 )
                 adaptations: array(
@@ -68,7 +70,9 @@ array(
             1: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        name: D
+                        parts: array(
+                            0: D
+                        )
                     )
                 )
                 adaptations: array(
@@ -77,7 +81,7 @@ array(
                         method: Identifier(
                             name: a
                         )
-                        newModifier: PROTECTED (2)
+                        newModifier: MODIFIER_PROTECTED (2)
                         newName: Identifier(
                             name: b
                         )
@@ -97,7 +101,7 @@ array(
                         method: Identifier(
                             name: e
                         )
-                        newModifier: PRIVATE (4)
+                        newModifier: MODIFIER_PRIVATE (4)
                         newName: null
                     )
                 )
@@ -105,47 +109,63 @@ array(
             2: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        name: E
+                        parts: array(
+                            0: E
+                        )
                     )
                     1: Name(
-                        name: F
+                        parts: array(
+                            0: F
+                        )
                     )
                     2: Name(
-                        name: G
+                        parts: array(
+                            0: G
+                        )
                     )
                 )
                 adaptations: array(
                     0: Stmt_TraitUseAdaptation_Precedence(
                         trait: Name(
-                            name: E
+                            parts: array(
+                                0: E
+                            )
                         )
                         method: Identifier(
                             name: a
                         )
                         insteadof: array(
                             0: Name(
-                                name: F
+                                parts: array(
+                                    0: F
+                                )
                             )
                             1: Name(
-                                name: G
+                                parts: array(
+                                    0: G
+                                )
                             )
                         )
                     )
                     1: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            name: E
+                            parts: array(
+                                0: E
+                            )
                         )
                         method: Identifier(
                             name: b
                         )
-                        newModifier: PROTECTED (2)
+                        newModifier: MODIFIER_PROTECTED (2)
                         newName: Identifier(
                             name: c
                         )
                     )
                     2: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            name: E
+                            parts: array(
+                                0: E
+                            )
                         )
                         method: Identifier(
                             name: d
@@ -157,12 +177,14 @@ array(
                     )
                     3: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            name: E
+                            parts: array(
+                                0: E
+                            )
                         )
                         method: Identifier(
                             name: f
                         )
-                        newModifier: PRIVATE (4)
+                        newModifier: MODIFIER_PRIVATE (4)
                         newName: null
                     )
                 )

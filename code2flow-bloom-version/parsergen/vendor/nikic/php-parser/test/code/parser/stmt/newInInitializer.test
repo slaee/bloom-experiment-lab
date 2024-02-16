@@ -14,6 +14,7 @@ class Bar {
     public $prop = new Foo;
 }
 -----
+!!php7
 array(
     0: Stmt_Const(
         consts: array(
@@ -23,7 +24,9 @@ array(
                 )
                 value: Expr_New(
                     class: Name(
-                        name: Foo
+                        parts: array(
+                            0: Foo
+                        )
                     )
                     args: array(
                     )
@@ -51,7 +54,9 @@ array(
                 )
                 default: Expr_New(
                     class: Name(
-                        name: Foo
+                        parts: array(
+                            0: Foo
+                        )
                     )
                     args: array(
                     )
@@ -62,13 +67,15 @@ array(
         stmts: array(
             0: Stmt_Static(
                 vars: array(
-                    0: StaticVar(
+                    0: Stmt_StaticVar(
                         var: Expr_Variable(
                             name: y
                         )
                         default: Expr_New(
                             class: Name(
-                                name: Foo
+                                parts: array(
+                                    0: Foo
+                                )
                             )
                             args: array(
                             )
@@ -84,14 +91,18 @@ array(
                 attrs: array(
                     0: Attribute(
                         name: Name(
-                            name: Attr
+                            parts: array(
+                                0: Attr
+                            )
                         )
                         args: array(
                             0: Arg(
                                 name: null
                                 value: Expr_New(
                                     class: Name(
-                                        name: Foo
+                                        parts: array(
+                                            0: Foo
+                                        )
                                     )
                                     args: array(
                                     )
@@ -124,7 +135,9 @@ array(
                         )
                         value: Expr_New(
                             class: Name(
-                                name: Foo
+                                parts: array(
+                                    0: Foo
+                                )
                             )
                             args: array(
                             )
@@ -135,16 +148,18 @@ array(
             1: Stmt_Property(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 type: null
                 props: array(
-                    0: PropertyItem(
+                    0: Stmt_PropertyProperty(
                         name: VarLikeIdentifier(
                             name: prop
                         )
                         default: Expr_New(
                             class: Name(
-                                name: Foo
+                                parts: array(
+                                    0: Foo
+                                )
                             )
                             args: array(
                             )

@@ -8,6 +8,7 @@ class Test {
     const Foo|Bar|null FOO = null;
 }
 -----
+!!php7
 array(
     0: Stmt_Class(
         attrGroups: array(
@@ -32,7 +33,7 @@ array(
                         name: Identifier(
                             name: X
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 1
                         )
                     )
@@ -41,7 +42,7 @@ array(
             1: Stmt_ClassConst(
                 attrGroups: array(
                 )
-                flags: PRIVATE (4)
+                flags: MODIFIER_PRIVATE (4)
                 type: Identifier(
                     name: string
                 )
@@ -90,10 +91,14 @@ array(
                 type: UnionType(
                     types: array(
                         0: Name(
-                            name: Foo
+                            parts: array(
+                                0: Foo
+                            )
                         )
                         1: Name(
-                            name: Bar
+                            parts: array(
+                                0: Bar
+                            )
                         )
                         2: Identifier(
                             name: null
@@ -107,7 +112,9 @@ array(
                         )
                         value: Expr_ConstFetch(
                             name: Name(
-                                name: null
+                                parts: array(
+                                    0: null
+                                )
                             )
                         )
                     )

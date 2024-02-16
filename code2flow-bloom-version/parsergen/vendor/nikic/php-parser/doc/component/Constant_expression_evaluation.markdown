@@ -19,9 +19,9 @@ PHP-Parser supports evaluation of such constant expressions through the `ConstEx
 
 use PhpParser\{ConstExprEvaluator, ConstExprEvaluationException};
 
-$evaluator = new ConstExprEvaluator();
+$evalutator = new ConstExprEvaluator();
 try {
-    $value = $evaluator->evaluateSilently($someExpr);
+    $value = $evalutator->evaluateSilently($someExpr);
 } catch (ConstExprEvaluationException $e) {
     // Either the expression contains unsupported expression types,
     // or an error occurred during evaluation
@@ -45,7 +45,7 @@ use PhpParser\Node\{Expr, Scalar};
 $evaluator = new ConstExprEvaluator();
 
 // 10 / 0
-$expr = new Expr\BinaryOp\Div(new Scalar\Int_(10), new Scalar\Int_(0));
+$expr = new Expr\BinaryOp\Div(new Scalar\LNumber(10), new Scalar\LNumber(0));
 
 var_dump($evaluator->evaluateDirectly($expr)); // float(INF)
 // Warning: Division by zero
@@ -69,8 +69,6 @@ expressions, apart from the following:
  * `Scalar\MagicConst\*`
  * `Expr\ConstFetch` (only null/false/true are handled)
  * `Expr\ClassConstFetch`
- * `Expr\New_` (since PHP 8.1)
- * `Expr\PropertyFetch` (since PHP 8.2)
 
 Handling these expression types requires non-local information, such as which global constants are
 defined. By default, the evaluator will throw a `ConstExprEvaluationException` when it encounters
@@ -85,7 +83,7 @@ specifying an evaluation fallback function:
 use PhpParser\{ConstExprEvaluator, ConstExprEvaluationException};
 use PhpParser\Node\Expr;
 
-$evaluator = new ConstExprEvaluator(function(Expr $expr) {
+$evalutator = new ConstExprEvaluator(function(Expr $expr) {
     if ($expr instanceof Expr\ConstFetch) {
         return fetchConstantSomehow($expr);
     }
@@ -98,7 +96,7 @@ $evaluator = new ConstExprEvaluator(function(Expr $expr) {
 });
 
 try {
-    $evaluator->evaluateSilently($someExpr);
+    $evalutator->evaluateSilently($someExpr);
 } catch (ConstExprEvaluationException $e) {
     // Handle exception
 }

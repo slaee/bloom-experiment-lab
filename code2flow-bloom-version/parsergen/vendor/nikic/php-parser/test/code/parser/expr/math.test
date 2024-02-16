@@ -39,6 +39,9 @@ array(
             expr: Expr_Variable(
                 name: a
             )
+            comments: array(
+                0: // unary ops
+            )
         )
         comments: array(
             0: // unary ops
@@ -62,9 +65,15 @@ array(
         expr: Expr_BinaryOp_BitwiseAnd(
             left: Expr_Variable(
                 name: a
+                comments: array(
+                    0: // binary ops
+                )
             )
             right: Expr_Variable(
                 name: b
+            )
+            comments: array(
+                0: // binary ops
             )
         )
         comments: array(
@@ -186,13 +195,22 @@ array(
             left: Expr_BinaryOp_Mul(
                 left: Expr_Variable(
                     name: a
+                    comments: array(
+                        0: // associativity
+                    )
                 )
                 right: Expr_Variable(
                     name: b
                 )
+                comments: array(
+                    0: // associativity
+                )
             )
             right: Expr_Variable(
                 name: c
+            )
+            comments: array(
+                0: // associativity
             )
         )
         comments: array(
@@ -218,6 +236,9 @@ array(
         expr: Expr_BinaryOp_Plus(
             left: Expr_Variable(
                 name: a
+                comments: array(
+                    0: // precedence
+                )
             )
             right: Expr_BinaryOp_Mul(
                 left: Expr_Variable(
@@ -226,6 +247,9 @@ array(
                 right: Expr_Variable(
                     name: c
                 )
+            )
+            comments: array(
+                0: // precedence
             )
         )
         comments: array(
@@ -251,6 +275,9 @@ array(
         expr: Expr_BinaryOp_Pow(
             left: Expr_Variable(
                 name: a
+                comments: array(
+                    0: // pow is special
+                )
             )
             right: Expr_BinaryOp_Pow(
                 left: Expr_Variable(
@@ -259,6 +286,9 @@ array(
                 right: Expr_Variable(
                     name: c
                 )
+            )
+            comments: array(
+                0: // pow is special
             )
         )
         comments: array(

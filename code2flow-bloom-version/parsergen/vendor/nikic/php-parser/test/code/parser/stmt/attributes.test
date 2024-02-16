@@ -31,6 +31,7 @@ $y = #[A11] fn() => 0;
 $a = #[A12] static function() {};
 $b = #[A13] static fn() => 0;
 -----
+!!php7
 array(
     0: Stmt_Function(
         attrGroups: array(
@@ -38,26 +39,32 @@ array(
                 attrs: array(
                     0: Attribute(
                         name: Name(
-                            name: A1
+                            parts: array(
+                                0: A1
+                            )
                         )
                         args: array(
                         )
                     )
                     1: Attribute(
                         name: Name(
-                            name: A2
+                            parts: array(
+                                0: A2
+                            )
                         )
                         args: array(
                         )
                     )
                     2: Attribute(
                         name: Name(
-                            name: A3
+                            parts: array(
+                                0: A3
+                            )
                         )
                         args: array(
                             0: Arg(
                                 name: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 0
                                 )
                                 byRef: false
@@ -67,14 +74,16 @@ array(
                     )
                     3: Attribute(
                         name: Name(
-                            name: A4
+                            parts: array(
+                                0: A4
+                            )
                         )
                         args: array(
                             0: Arg(
                                 name: Identifier(
                                     name: x
                                 )
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 1
                                 )
                                 byRef: false
@@ -101,7 +110,9 @@ array(
                 attrs: array(
                     0: Attribute(
                         name: Name(
-                            name: A5
+                            parts: array(
+                                0: A5
+                            )
                         )
                         args: array(
                         )
@@ -123,7 +134,9 @@ array(
                         attrs: array(
                             0: Attribute(
                                 name: Name(
-                                    name: A6
+                                    parts: array(
+                                        0: A6
+                                    )
                                 )
                                 args: array(
                                 )
@@ -131,7 +144,7 @@ array(
                         )
                     )
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 byRef: false
                 name: Identifier(
                     name: m
@@ -143,7 +156,9 @@ array(
                                 attrs: array(
                                     0: Attribute(
                                         name: Name(
-                                            name: A7
+                                            parts: array(
+                                                0: A7
+                                            )
                                         )
                                         args: array(
                                         )
@@ -171,7 +186,9 @@ array(
                         attrs: array(
                             0: Attribute(
                                 name: Name(
-                                    name: A14
+                                    parts: array(
+                                        0: A14
+                                    )
                                 )
                                 args: array(
                                 )
@@ -179,10 +196,10 @@ array(
                         )
                     )
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 type: null
                 props: array(
-                    0: PropertyItem(
+                    0: Stmt_PropertyProperty(
                         name: VarLikeIdentifier(
                             name: prop
                         )
@@ -198,7 +215,9 @@ array(
                 attrs: array(
                     0: Attribute(
                         name: Name(
-                            name: A8
+                            parts: array(
+                                0: A8
+                            )
                         )
                         args: array(
                         )
@@ -220,7 +239,9 @@ array(
                 attrs: array(
                     0: Attribute(
                         name: Name(
-                            name: A9
+                            parts: array(
+                                0: A9
+                            )
                         )
                         args: array(
                         )
@@ -245,7 +266,9 @@ array(
                         attrs: array(
                             0: Attribute(
                                 name: Name(
-                                    name: A10
+                                    parts: array(
+                                        0: A10
+                                    )
                                 )
                                 args: array(
                                 )
@@ -276,7 +299,9 @@ array(
                         attrs: array(
                             0: Attribute(
                                 name: Name(
-                                    name: A11
+                                    parts: array(
+                                        0: A11
+                                    )
                                 )
                                 args: array(
                                 )
@@ -289,7 +314,7 @@ array(
                 params: array(
                 )
                 returnType: null
-                expr: Scalar_Int(
+                expr: Scalar_LNumber(
                     value: 0
                 )
             )
@@ -306,7 +331,9 @@ array(
                         attrs: array(
                             0: Attribute(
                                 name: Name(
-                                    name: A12
+                                    parts: array(
+                                        0: A12
+                                    )
                                 )
                                 args: array(
                                 )
@@ -337,7 +364,9 @@ array(
                         attrs: array(
                             0: Attribute(
                                 name: Name(
-                                    name: A13
+                                    parts: array(
+                                        0: A13
+                                    )
                                 )
                                 args: array(
                                 )
@@ -350,7 +379,7 @@ array(
                 params: array(
                 )
                 returnType: null
-                expr: Scalar_Int(
+                expr: Scalar_LNumber(
                     value: 0
                 )
             )

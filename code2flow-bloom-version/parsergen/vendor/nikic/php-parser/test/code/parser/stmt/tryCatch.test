@@ -27,7 +27,9 @@ array(
             0: Stmt_Expression(
                 expr: Expr_FuncCall(
                     name: Name(
-                        name: doTry
+                        parts: array(
+                            0: doTry
+                        )
                     )
                     args: array(
                     )
@@ -38,7 +40,9 @@ array(
             0: Stmt_Catch(
                 types: array(
                     0: Name(
-                        name: A
+                        parts: array(
+                            0: A
+                        )
                     )
                 )
                 var: Expr_Variable(
@@ -48,7 +52,9 @@ array(
                     0: Stmt_Expression(
                         expr: Expr_FuncCall(
                             name: Name(
-                                name: doCatchA
+                                parts: array(
+                                    0: doCatchA
+                                )
                             )
                             args: array(
                             )
@@ -59,7 +65,9 @@ array(
             1: Stmt_Catch(
                 types: array(
                     0: Name(
-                        name: B
+                        parts: array(
+                            0: B
+                        )
                     )
                 )
                 var: Expr_Variable(
@@ -69,7 +77,9 @@ array(
                     0: Stmt_Expression(
                         expr: Expr_FuncCall(
                             name: Name(
-                                name: doCatchB
+                                parts: array(
+                                    0: doCatchB
+                                )
                             )
                             args: array(
                             )
@@ -83,7 +93,9 @@ array(
                 0: Stmt_Expression(
                     expr: Expr_FuncCall(
                         name: Name(
-                            name: doFinally
+                            parts: array(
+                                0: doFinally
+                            )
                         )
                         args: array(
                         )
@@ -99,7 +111,9 @@ array(
             0: Stmt_Catch(
                 types: array(
                     0: Name(
-                        name: A
+                        parts: array(
+                            0: A
+                        )
                     )
                 )
                 var: Expr_Variable(

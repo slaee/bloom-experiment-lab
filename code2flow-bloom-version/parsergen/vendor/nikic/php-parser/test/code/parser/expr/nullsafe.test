@@ -8,6 +8,7 @@ new $a?->b;
 "{$a?->b}";
 "$a?->b";
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_NullsafePropertyFetch(
@@ -54,7 +55,7 @@ array(
         )
     )
     3: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_NullsafePropertyFetch(
                     var: Expr_Variable(
@@ -68,7 +69,7 @@ array(
         )
     )
     4: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_NullsafePropertyFetch(
                     var: Expr_Variable(

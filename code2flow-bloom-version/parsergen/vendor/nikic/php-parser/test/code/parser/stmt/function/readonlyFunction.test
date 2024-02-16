@@ -21,7 +21,9 @@ array(
     1: Stmt_Expression(
         expr: Expr_FuncCall(
             name: Name(
-                name: readonly
+                parts: array(
+                    0: readonly
+                )
             )
             args: array(
             )

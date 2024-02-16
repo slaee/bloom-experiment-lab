@@ -12,7 +12,7 @@ Hi!
 array(
     0: Stmt_Declare(
         declares: array(
-            0: DeclareItem(
+            0: Stmt_DeclareDeclare(
                 key: Identifier(
                     name: A
                 )
@@ -25,7 +25,9 @@ array(
     )
     1: Stmt_Namespace(
         name: Name(
-            name: B
+            parts: array(
+                0: B
+            )
         )
         stmts: array(
         )
@@ -48,7 +50,9 @@ array(
     )
     1: Stmt_Namespace(
         name: Name(
-            name: Foo
+            parts: array(
+                0: Foo
+            )
         )
         stmts: array(
         )

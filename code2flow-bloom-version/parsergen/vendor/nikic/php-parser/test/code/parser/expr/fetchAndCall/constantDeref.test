@@ -21,7 +21,7 @@ array(
             var: Scalar_String(
                 value: abc
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 2
             )
         )
@@ -33,15 +33,15 @@ array(
                     var: Scalar_String(
                         value: abc
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 2
                     )
                 )
-                dim: Scalar_Int(
+                dim: Scalar_LNumber(
                     value: 0
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -50,25 +50,25 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_Array(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: null
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 1
                         )
                         byRef: false
                         unpack: false
                     )
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 2
                         )
                         byRef: false
                         unpack: false
                     )
-                    2: ArrayItem(
+                    2: Expr_ArrayItem(
                         key: null
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 3
                         )
                         byRef: false
@@ -76,7 +76,7 @@ array(
                     )
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 2
             )
         )
@@ -87,25 +87,25 @@ array(
                 var: Expr_ArrayDimFetch(
                     var: Expr_Array(
                         items: array(
-                            0: ArrayItem(
+                            0: Expr_ArrayItem(
                                 key: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 1
                                 )
                                 byRef: false
                                 unpack: false
                             )
-                            1: ArrayItem(
+                            1: Expr_ArrayItem(
                                 key: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 2
                                 )
                                 byRef: false
                                 unpack: false
                             )
-                            2: ArrayItem(
+                            2: Expr_ArrayItem(
                                 key: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 3
                                 )
                                 byRef: false
@@ -113,15 +113,15 @@ array(
                             )
                         )
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 2
                     )
                 )
-                dim: Scalar_Int(
+                dim: Scalar_LNumber(
                     value: 0
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -130,25 +130,25 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_Array(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: null
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 1
                         )
                         byRef: false
                         unpack: false
                     )
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 2
                         )
                         byRef: false
                         unpack: false
                     )
-                    2: ArrayItem(
+                    2: Expr_ArrayItem(
                         key: null
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 3
                         )
                         byRef: false
@@ -156,7 +156,7 @@ array(
                     )
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 2
             )
         )
@@ -167,25 +167,25 @@ array(
                 var: Expr_ArrayDimFetch(
                     var: Expr_Array(
                         items: array(
-                            0: ArrayItem(
+                            0: Expr_ArrayItem(
                                 key: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 1
                                 )
                                 byRef: false
                                 unpack: false
                             )
-                            1: ArrayItem(
+                            1: Expr_ArrayItem(
                                 key: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 2
                                 )
                                 byRef: false
                                 unpack: false
                             )
-                            2: ArrayItem(
+                            2: Expr_ArrayItem(
                                 key: null
-                                value: Scalar_Int(
+                                value: Scalar_LNumber(
                                     value: 3
                                 )
                                 byRef: false
@@ -193,15 +193,15 @@ array(
                             )
                         )
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 2
                     )
                 )
-                dim: Scalar_Int(
+                dim: Scalar_LNumber(
                     value: 0
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -210,10 +210,12 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_ConstFetch(
                 name: Name(
-                    name: FOO
+                    parts: array(
+                        0: FOO
+                    )
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )
@@ -222,13 +224,15 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_ClassConstFetch(
                 class: Name(
-                    name: Foo
+                    parts: array(
+                        0: Foo
+                    )
                 )
                 name: Identifier(
                     name: BAR
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 1
             )
         )
@@ -245,15 +249,15 @@ array(
                             name: BAR
                         )
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 2
                     )
                 )
-                dim: Scalar_Int(
+                dim: Scalar_LNumber(
                     value: 1
                 )
             )
-            dim: Scalar_Int(
+            dim: Scalar_LNumber(
                 value: 0
             )
         )

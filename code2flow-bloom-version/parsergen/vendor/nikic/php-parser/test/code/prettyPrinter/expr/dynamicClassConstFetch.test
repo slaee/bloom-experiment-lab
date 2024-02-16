@@ -4,5 +4,6 @@ Dynamic class constant fetch
 Foo::{bar()};
 $foo::{bar()};
 -----
+!!php7
 Foo::{bar()};
 $foo::{bar()};

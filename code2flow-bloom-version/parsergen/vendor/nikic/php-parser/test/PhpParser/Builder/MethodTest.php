@@ -3,7 +3,6 @@
 namespace PhpParser\Builder;
 
 use PhpParser\Comment;
-use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Attribute;
@@ -12,11 +11,12 @@ use PhpParser\Node\Expr\Print_;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
-use PhpParser\Node\Scalar\Int_;
+use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
 
-class MethodTest extends \PHPUnit\Framework\TestCase {
+class MethodTest extends \PHPUnit\Framework\TestCase
+{
     public function createMethodBuilder($name) {
         return new Method($name);
     }
@@ -31,7 +31,9 @@ class MethodTest extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(
             new Stmt\ClassMethod('test', [
-                'flags' => Modifiers::PUBLIC | Modifiers::ABSTRACT | Modifiers::STATIC,
+                'flags' => Stmt\Class_::MODIFIER_PUBLIC
+                         | Stmt\Class_::MODIFIER_ABSTRACT
+                         | Stmt\Class_::MODIFIER_STATIC,
                 'stmts' => null,
             ]),
             $node
@@ -45,7 +47,8 @@ class MethodTest extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(
             new Stmt\ClassMethod('test', [
-                'flags' => Modifiers::PROTECTED | Modifiers::FINAL
+                'flags' => Stmt\Class_::MODIFIER_PROTECTED
+                         | Stmt\Class_::MODIFIER_FINAL
             ]),
             $node
         );
@@ -57,7 +60,7 @@ class MethodTest extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(
             new Stmt\ClassMethod('test', [
-                'type' => Modifiers::PRIVATE
+                'type' => Stmt\Class_::MODIFIER_PRIVATE
             ]),
             $node
         );
@@ -131,7 +134,7 @@ class MethodTest extends \PHPUnit\Framework\TestCase {
     public function testAddAttribute() {
         $attribute = new Attribute(
             new Name('Attr'),
-            [new Arg(new Int_(1), false, false, [], new Identifier('name'))]
+            [new Arg(new LNumber(1), false, false, [], new Identifier('name'))]
         );
         $attributeGroup = new AttributeGroup([$attribute]);
 
@@ -149,7 +152,7 @@ class MethodTest extends \PHPUnit\Framework\TestCase {
             ->setReturnType('bool')
             ->getNode();
         $this->assertEquals(new Stmt\ClassMethod('test', [
-            'returnType' => new Identifier('bool'),
+            'returnType' => 'bool'
         ], []), $node);
     }
 

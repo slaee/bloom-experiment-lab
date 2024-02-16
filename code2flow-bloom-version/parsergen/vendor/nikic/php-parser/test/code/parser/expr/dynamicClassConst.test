@@ -4,15 +4,20 @@ Dynamic class constant fetch
 Foo::{bar()};
 $foo::{bar()};
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_ClassConstFetch(
             class: Name(
-                name: Foo
+                parts: array(
+                    0: Foo
+                )
             )
             name: Expr_FuncCall(
                 name: Name(
-                    name: bar
+                    parts: array(
+                        0: bar
+                    )
                 )
                 args: array(
                 )
@@ -26,7 +31,9 @@ array(
             )
             name: Expr_FuncCall(
                 name: Name(
-                    name: bar
+                    parts: array(
+                        0: bar
+                    )
                 )
                 args: array(
                 )

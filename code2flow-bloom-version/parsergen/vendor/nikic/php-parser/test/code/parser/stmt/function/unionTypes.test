@@ -8,6 +8,7 @@ class Test {
 
 function test(A|B $a): int|false {}
 -----
+!!php7
 array(
     0: Stmt_Class(
         attrGroups: array(
@@ -23,11 +24,13 @@ array(
             0: Stmt_Property(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 type: UnionType(
                     types: array(
                         0: Name(
-                            name: A
+                            parts: array(
+                                0: A
+                            )
                         )
                         1: Identifier(
                             name: iterable
@@ -38,7 +41,7 @@ array(
                     )
                 )
                 props: array(
-                    0: PropertyItem(
+                    0: Stmt_PropertyProperty(
                         name: VarLikeIdentifier(
                             name: prop
                         )
@@ -63,10 +66,14 @@ array(
                 type: UnionType(
                     types: array(
                         0: Name(
-                            name: A
+                            parts: array(
+                                0: A
+                            )
                         )
                         1: Name(
-                            name: B
+                            parts: array(
+                                0: B
+                            )
                         )
                     )
                 )

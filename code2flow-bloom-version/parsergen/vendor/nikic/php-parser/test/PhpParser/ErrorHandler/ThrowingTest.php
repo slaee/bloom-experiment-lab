@@ -4,7 +4,8 @@ namespace PhpParser\ErrorHandler;
 
 use PhpParser\Error;
 
-class ThrowingTest extends \PHPUnit\Framework\TestCase {
+class ThrowingTest extends \PHPUnit\Framework\TestCase
+{
     public function testHandleError() {
         $this->expectException(Error::class);
         $this->expectExceptionMessage('Test');

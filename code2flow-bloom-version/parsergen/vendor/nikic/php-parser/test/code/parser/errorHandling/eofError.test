@@ -7,7 +7,9 @@ array(
     0: Stmt_Expression(
         expr: Expr_ConstFetch(
             name: Name(
-                name: foo
+                parts: array(
+                    0: foo
+                )
             )
         )
     )
@@ -20,7 +22,9 @@ array(
     0: Stmt_Expression(
         expr: Expr_ConstFetch(
             name: Name(
-                name: foo
+                parts: array(
+                    0: foo
+                )
             )
         )
     )

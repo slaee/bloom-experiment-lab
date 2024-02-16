@@ -7,10 +7,12 @@ array(
     0: Stmt_Use(
         type: TYPE_NORMAL (1)
         uses: array(
-            0: UseItem(
+            0: Stmt_UseUse(
                 type: TYPE_UNKNOWN (0)
                 name: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 alias: Identifier(
                     name: self
@@ -27,10 +29,12 @@ array(
     0: Stmt_Use(
         type: TYPE_NORMAL (1)
         uses: array(
-            0: UseItem(
+            0: Stmt_UseUse(
                 type: TYPE_UNKNOWN (0)
                 name: Name(
-                    name: B
+                    parts: array(
+                        0: B
+                    )
                 )
                 alias: Identifier(
                     name: PARENT

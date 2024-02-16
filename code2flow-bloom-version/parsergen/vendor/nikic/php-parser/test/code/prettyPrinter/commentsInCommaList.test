@@ -27,6 +27,7 @@ new Foo(
     $foo
 );
 -----
+!!php7
 $arr = [
     // Foo
     $foo,

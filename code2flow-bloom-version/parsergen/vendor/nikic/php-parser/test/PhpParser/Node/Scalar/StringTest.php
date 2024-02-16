@@ -5,9 +5,11 @@ namespace PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt\Echo_;
 use PhpParser\ParserFactory;
 
-class StringTest extends \PHPUnit\Framework\TestCase {
-    public function testRawValue() {
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
+class StringTest extends \PHPUnit\Framework\TestCase
+{
+    public function testRawValue()
+    {
+        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $nodes = $parser->parse('<?php echo "sequence \x41";');
 
         $echo = $nodes[0];

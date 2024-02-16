@@ -3,17 +3,17 @@
 namespace PhpParser\Builder;
 
 use PhpParser\Comment;
-use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Attribute;
 use PhpParser\Node\AttributeGroup;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
-use PhpParser\Node\Scalar\Int_;
+use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Stmt;
 
-class ClassTest extends \PHPUnit\Framework\TestCase {
+class ClassTest extends \PHPUnit\Framework\TestCase
+{
     protected function createClassBuilder($class) {
         return new Class_($class);
     }
@@ -48,7 +48,7 @@ class ClassTest extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(
             new Stmt\Class_('Test', [
-                'flags' => Modifiers::ABSTRACT
+                'flags' => Stmt\Class_::MODIFIER_ABSTRACT
             ]),
             $node
         );
@@ -62,7 +62,7 @@ class ClassTest extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(
             new Stmt\Class_('Test', [
-                'flags' => Modifiers::FINAL
+                'flags' => Stmt\Class_::MODIFIER_FINAL
             ]),
             $node
         );
@@ -76,7 +76,7 @@ class ClassTest extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(
             new Stmt\Class_('Test', [
-                'flags' => Modifiers::READONLY
+                'flags' => Stmt\Class_::MODIFIER_READONLY
             ]),
             $node
         );
@@ -85,8 +85,8 @@ class ClassTest extends \PHPUnit\Framework\TestCase {
     public function testStatementOrder() {
         $method = new Stmt\ClassMethod('testMethod');
         $property = new Stmt\Property(
-            Modifiers::PUBLIC,
-            [new Node\PropertyItem('testProperty')]
+            Stmt\Class_::MODIFIER_PUBLIC,
+            [new Stmt\PropertyProperty('testProperty')]
         );
         $const = new Stmt\ClassConst([
             new Node\Const_('TEST_CONST', new Node\Scalar\String_('ABC'))
@@ -144,7 +144,7 @@ DOC;
     public function testAddAttribute() {
         $attribute = new Attribute(
             new Name('Attr'),
-            [new Arg(new Int_(1), false, false, [], new Identifier('name'))]
+            [new Arg(new LNumber(1), false, false, [], new Identifier('name'))]
         );
         $attributeGroup = new AttributeGroup([$attribute]);
 

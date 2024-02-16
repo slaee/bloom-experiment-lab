@@ -95,7 +95,7 @@ array(
             2: Stmt_ClassMethod(
                 attrGroups: array(
                 )
-                flags: STATIC (8)
+                flags: MODIFIER_STATIC (8)
                 byRef: false
                 name: Identifier(
                     name: list
@@ -109,7 +109,7 @@ array(
             3: Stmt_ClassMethod(
                 attrGroups: array(
                 )
-                flags: STATIC (8)
+                flags: MODIFIER_STATIC (8)
                 byRef: false
                 name: Identifier(
                     name: protected
@@ -123,10 +123,10 @@ array(
             4: Stmt_Property(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 type: null
                 props: array(
-                    0: PropertyItem(
+                    0: Stmt_PropertyProperty(
                         name: VarLikeIdentifier(
                             name: class
                         )
@@ -137,10 +137,10 @@ array(
             5: Stmt_Property(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 type: null
                 props: array(
-                    0: PropertyItem(
+                    0: Stmt_PropertyProperty(
                         name: VarLikeIdentifier(
                             name: private
                         )
@@ -158,7 +158,7 @@ array(
                         name: Identifier(
                             name: TRAIT
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 3
                         )
                     )
@@ -166,7 +166,7 @@ array(
                         name: Identifier(
                             name: FINAL
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 4
                         )
                     )
@@ -182,7 +182,7 @@ array(
                         name: Identifier(
                             name: __CLASS__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 1
                         )
                     )
@@ -190,7 +190,7 @@ array(
                         name: Identifier(
                             name: __TRAIT__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 2
                         )
                     )
@@ -198,7 +198,7 @@ array(
                         name: Identifier(
                             name: __FUNCTION__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 3
                         )
                     )
@@ -206,7 +206,7 @@ array(
                         name: Identifier(
                             name: __METHOD__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 4
                         )
                     )
@@ -214,7 +214,7 @@ array(
                         name: Identifier(
                             name: __LINE__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 5
                         )
                     )
@@ -222,7 +222,7 @@ array(
                         name: Identifier(
                             name: __FILE__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 6
                         )
                     )
@@ -230,7 +230,7 @@ array(
                         name: Identifier(
                             name: __DIR__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 7
                         )
                     )
@@ -238,7 +238,7 @@ array(
                         name: Identifier(
                             name: __NAMESPACE__
                         )
-                        value: Scalar_Int(
+                        value: Scalar_LNumber(
                             value: 8
                         )
                     )
@@ -258,7 +258,9 @@ array(
             )
             expr: Expr_New(
                 class: Name(
-                    name: Test
+                    parts: array(
+                        0: Test
+                    )
                 )
                 args: array(
                 )
@@ -292,7 +294,9 @@ array(
     4: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: Test
+                parts: array(
+                    0: Test
+                )
             )
             name: Identifier(
                 name: list
@@ -304,7 +308,9 @@ array(
     5: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: Test
+                parts: array(
+                    0: Test
+                )
             )
             name: Identifier(
                 name: protected
@@ -336,7 +342,9 @@ array(
     8: Stmt_Expression(
         expr: Expr_ClassConstFetch(
             class: Name(
-                name: Test
+                parts: array(
+                    0: Test
+                )
             )
             name: Identifier(
                 name: TRAIT
@@ -346,7 +354,9 @@ array(
     9: Stmt_Expression(
         expr: Expr_ClassConstFetch(
             class: Name(
-                name: Test
+                parts: array(
+                    0: Test
+                )
             )
             name: Identifier(
                 name: FINAL
@@ -367,29 +377,39 @@ array(
             0: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        name: TraitA
+                        parts: array(
+                            0: TraitA
+                        )
                     )
                     1: Name(
-                        name: TraitB
+                        parts: array(
+                            0: TraitB
+                        )
                     )
                 )
                 adaptations: array(
                     0: Stmt_TraitUseAdaptation_Precedence(
                         trait: Name(
-                            name: TraitA
+                            parts: array(
+                                0: TraitA
+                            )
                         )
                         method: Identifier(
                             name: catch
                         )
                         insteadof: array(
                             0: Name_Relative(
-                                name: TraitB
+                                parts: array(
+                                    0: TraitB
+                                )
                             )
                         )
                     )
                     1: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            name: TraitA
+                            parts: array(
+                                0: TraitA
+                            )
                         )
                         method: Identifier(
                             name: list
@@ -401,24 +421,28 @@ array(
                     )
                     2: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            name: TraitB
+                            parts: array(
+                                0: TraitB
+                            )
                         )
                         method: Identifier(
                             name: throw
                         )
-                        newModifier: PROTECTED (2)
+                        newModifier: MODIFIER_PROTECTED (2)
                         newName: Identifier(
                             name: public
                         )
                     )
                     3: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            name: TraitB
+                            parts: array(
+                                0: TraitB
+                            )
                         )
                         method: Identifier(
                             name: self
                         )
-                        newModifier: PROTECTED (2)
+                        newModifier: MODIFIER_PROTECTED (2)
                         newName: null
                     )
                     4: Stmt_TraitUseAdaptation_Alias(
@@ -433,7 +457,9 @@ array(
                     )
                     5: Stmt_TraitUseAdaptation_Alias(
                         trait: Name_FullyQualified(
-                            name: TraitC
+                            parts: array(
+                                0: TraitC
+                            )
                         )
                         method: Identifier(
                             name: exit
@@ -445,7 +471,9 @@ array(
                     )
                     6: Stmt_TraitUseAdaptation_Alias(
                         trait: Name_Relative(
-                            name: TraitC
+                            parts: array(
+                                0: TraitC
+                            )
                         )
                         method: Identifier(
                             name: exit
@@ -457,7 +485,9 @@ array(
                     )
                     7: Stmt_TraitUseAdaptation_Precedence(
                         trait: Name(
-                            name: TraitA
+                            parts: array(
+                                0: TraitA
+                            )
                         )
                         method: Identifier(
                             name: catch
@@ -469,7 +499,9 @@ array(
                         )
                         insteadof: array(
                             0: Name(
-                                name: TraitB
+                                parts: array(
+                                    0: TraitB
+                                )
                             )
                         )
                     )

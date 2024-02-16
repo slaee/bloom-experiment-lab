@@ -15,17 +15,21 @@ array(
         )
         extends: array(
             0: Name(
-                name: C
+                parts: array(
+                    0: C
+                )
             )
             1: Name(
-                name: D
+                parts: array(
+                    0: D
+                )
             )
         )
         stmts: array(
             0: Stmt_ClassMethod(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 byRef: false
                 name: Identifier(
                     name: a

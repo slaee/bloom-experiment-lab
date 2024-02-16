@@ -35,7 +35,9 @@ array(
                 )
                 default: Expr_ConstFetch(
                     name: Name(
-                        name: null
+                        parts: array(
+                            0: null
+                        )
                     )
                 )
             )
@@ -65,7 +67,9 @@ array(
                 )
                 default: Expr_ClassConstFetch(
                     class: Name(
-                        name: A
+                        parts: array(
+                            0: A
+                        )
                     )
                     name: Identifier(
                         name: B
@@ -83,7 +87,7 @@ array(
                     name: f
                 )
                 default: Expr_UnaryPlus(
-                    expr: Scalar_Int(
+                    expr: Scalar_LNumber(
                         value: 1
                     )
                 )
@@ -99,7 +103,7 @@ array(
                     name: g
                 )
                 default: Expr_UnaryMinus(
-                    expr: Scalar_Float(
+                    expr: Scalar_DNumber(
                         value: 1
                     )
                 )
@@ -146,7 +150,7 @@ array(
                 )
                 default: Expr_Array(
                     items: array(
-                        0: ArrayItem(
+                        0: Expr_ArrayItem(
                             key: null
                             value: Scalar_String(
                                 value: foo
@@ -169,7 +173,7 @@ array(
                 )
                 default: Expr_Array(
                     items: array(
-                        0: ArrayItem(
+                        0: Expr_ArrayItem(
                             key: null
                             value: Scalar_String(
                                 value: foo
@@ -177,7 +181,7 @@ array(
                             byRef: false
                             unpack: false
                         )
-                        1: ArrayItem(
+                        1: Expr_ArrayItem(
                             key: Scalar_String(
                                 value: bar
                             )

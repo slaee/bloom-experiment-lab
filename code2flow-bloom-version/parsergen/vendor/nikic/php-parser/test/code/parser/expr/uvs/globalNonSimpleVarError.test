@@ -3,6 +3,7 @@ Non-simple variables are forbidden in PHP 7
 <?php
 global $$foo->bar;
 -----
+!!php7
 Syntax error, unexpected T_OBJECT_OPERATOR, expecting ';' from 2:13 to 2:14
 array(
     0: Stmt_Global(
@@ -17,7 +18,9 @@ array(
     1: Stmt_Expression(
         expr: Expr_ConstFetch(
             name: Name(
-                name: bar
+                parts: array(
+                    0: bar
+                )
             )
         )
     )

@@ -15,10 +15,9 @@ accessed through `getNode()`. Fluent builders are available for
 the following syntactic elements:
 
  * namespaces and use statements
- * classes, interfaces, traits and enums
+ * classes, interfaces and traits
  * methods, functions and parameters
- * properties, class constants and enum cases
- * trait uses and trait use adaptations
+ * properties
 
 Here is an example:
 
@@ -96,13 +95,13 @@ abstract class SomeOtherClass extends SomeClass implements A\Few, \Interfaces
         AnotherTrait::func insteadof SecondTrait;
     }
     protected $someProperty;
-    private $anotherProperty = [1, 2, 3];
+    private $anotherProperty = array(1, 2, 3);
     /**
      * This method does something.
      *
      * @param SomeClass And takes a parameter
      */
-    abstract public function someMethod(SomeClass $someParam): bool;
+    public abstract function someMethod(SomeClass $someParam) : bool;
     protected function anotherMethod($someParam = 'test')
     {
         print $someParam;
@@ -134,8 +133,6 @@ nodes. The following methods are currently available:
  * `propertyFetch($var, $name)`: Creates a property fetch node. Converts `$name` to an `Identifier`
    node.
  * `concat(...$exprs)`: Create a tree of `BinaryOp\Concat` nodes for the given expressions.
- * `attribute($name, $args)`: Create a `Attribute` node. Converts `$name` to a `Name` node and
-   normalizes arguments.
 
 These methods may be expanded on an as-needed basis. Please open an issue or PR if a common
 operation is missing.

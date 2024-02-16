@@ -7,12 +7,13 @@ list(($a), ((($b)))) = $x;
 // This is illegal, but not a syntax error.
 list(1 + 1) = $x;
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Assign(
             var: Expr_List(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: a
@@ -20,7 +21,7 @@ array(
                         byRef: false
                         unpack: false
                     )
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: b
@@ -29,9 +30,15 @@ array(
                         unpack: false
                     )
                 )
+                comments: array(
+                    0: // This is legal.
+                )
             )
             expr: Expr_Variable(
                 name: x
+            )
+            comments: array(
+                0: // This is legal.
             )
         )
         comments: array(
@@ -42,13 +49,13 @@ array(
         expr: Expr_Assign(
             var: Expr_List(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: null
                         value: Expr_BinaryOp_Plus(
-                            left: Scalar_Int(
+                            left: Scalar_LNumber(
                                 value: 1
                             )
-                            right: Scalar_Int(
+                            right: Scalar_LNumber(
                                 value: 1
                             )
                         )
@@ -56,9 +63,15 @@ array(
                         unpack: false
                     )
                 )
+                comments: array(
+                    0: // This is illegal, but not a syntax error.
+                )
             )
             expr: Expr_Variable(
                 name: x
+            )
+            comments: array(
+                0: // This is illegal, but not a syntax error.
             )
         )
         comments: array(

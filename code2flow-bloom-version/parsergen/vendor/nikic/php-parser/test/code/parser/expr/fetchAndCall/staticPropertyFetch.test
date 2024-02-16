@@ -17,10 +17,18 @@ array(
     0: Stmt_Expression(
         expr: Expr_StaticPropertyFetch(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
+                comments: array(
+                    0: // property name variations
+                )
             )
             name: VarLikeIdentifier(
                 name: b
+            )
+            comments: array(
+                0: // property name variations
             )
         )
         comments: array(
@@ -30,7 +38,9 @@ array(
     1: Stmt_Expression(
         expr: Expr_StaticPropertyFetch(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
             name: Expr_Variable(
                 name: b
@@ -40,7 +50,9 @@ array(
     2: Stmt_Expression(
         expr: Expr_StaticPropertyFetch(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
             name: Scalar_String(
                 value: b
@@ -51,14 +63,25 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_StaticPropertyFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
+                    comments: array(
+                        0: // array access
+                    )
                 )
                 name: VarLikeIdentifier(
                     name: b
                 )
+                comments: array(
+                    0: // array access
+                )
             )
             dim: Scalar_String(
                 value: c
+            )
+            comments: array(
+                0: // array access
             )
         )
         comments: array(
@@ -69,7 +92,9 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_StaticPropertyFetch(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 name: VarLikeIdentifier(
                     name: b

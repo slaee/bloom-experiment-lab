@@ -11,13 +11,18 @@ bar;
 array(
     0: Stmt_Namespace(
         name: Name(
-            name: Foo\Bar
+            parts: array(
+                0: Foo
+                1: Bar
+            )
         )
         stmts: array(
             0: Stmt_Expression(
                 expr: Expr_ConstFetch(
                     name: Name(
-                        name: foo
+                        parts: array(
+                            0: foo
+                        )
                     )
                 )
             )
@@ -25,13 +30,17 @@ array(
     )
     1: Stmt_Namespace(
         name: Name(
-            name: Bar
+            parts: array(
+                0: Bar
+            )
         )
         stmts: array(
             0: Stmt_Expression(
                 expr: Expr_ConstFetch(
                     name: Name(
-                        name: bar
+                        parts: array(
+                            0: bar
+                        )
                     )
                 )
             )

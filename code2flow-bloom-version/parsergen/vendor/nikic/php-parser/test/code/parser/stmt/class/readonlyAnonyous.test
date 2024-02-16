@@ -4,13 +4,14 @@ Readonly anonymous class
 
 new readonly class {};
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_New(
             class: Stmt_Class(
                 attrGroups: array(
                 )
-                flags: READONLY (64)
+                flags: MODIFIER_READONLY (64)
                 name: null
                 extends: null
                 implements: array(

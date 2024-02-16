@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace PhpParser;
 
@@ -12,7 +12,7 @@ class NodeVisitorForTesting implements NodeVisitor {
         $this->returnsPos = 0;
     }
 
-    public function beforeTraverse(array $nodes): ?array {
+    public function beforeTraverse(array $nodes) {
         return $this->traceEvent('beforeTraverse', $nodes);
     }
 
@@ -24,7 +24,7 @@ class NodeVisitorForTesting implements NodeVisitor {
         return $this->traceEvent('leaveNode', $node);
     }
 
-    public function afterTraverse(array $nodes): ?array {
+    public function afterTraverse(array $nodes) {
         return $this->traceEvent('afterTraverse', $nodes);
     }
 

@@ -11,11 +11,12 @@ use PhpParser\Node\Expr\Print_;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
-use PhpParser\Node\Scalar\Int_;
+use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
 
-class FunctionTest extends \PHPUnit\Framework\TestCase {
+class FunctionTest extends \PHPUnit\Framework\TestCase
+{
     public function createFunctionBuilder($name) {
         return new Function_($name);
     }
@@ -89,7 +90,7 @@ class FunctionTest extends \PHPUnit\Framework\TestCase {
     public function testAddAttribute() {
         $attribute = new Attribute(
             new Name('Attr'),
-            [new Arg(new Int_(1), false, false, [], new Identifier('name'))]
+            [new Arg(new LNumber(1), false, false, [], new Identifier('name'))]
         );
         $attributeGroup = new AttributeGroup([$attribute]);
 
@@ -108,7 +109,7 @@ class FunctionTest extends \PHPUnit\Framework\TestCase {
             ->getNode();
 
         $this->assertEquals(new Stmt\Function_('test', [
-            'returnType' => new Identifier('void'),
+            'returnType' => 'void'
         ], []), $node);
     }
 

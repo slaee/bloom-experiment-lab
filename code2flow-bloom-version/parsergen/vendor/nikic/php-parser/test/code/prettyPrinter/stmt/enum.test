@@ -18,9 +18,8 @@ enum B: int {
 enum C: string implements D {
     case Z = 'A';
 }
-
-enum D: \Foo\Bar {}
 -----
+!!php7
 enum A implements B
 {
     case X;
@@ -37,7 +36,4 @@ enum B : int
 enum C : string implements D
 {
     case Z = 'A';
-}
-enum D : \Foo\Bar
-{
 }

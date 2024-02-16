@@ -5,6 +5,7 @@ Trailing comma in parameter list
 function foo($bar, ) {
 }
 -----
+!!php7
 array(
     0: Stmt_Function(
         attrGroups: array(
@@ -42,6 +43,7 @@ class Foo
     }
 }
 -----
+!!php7
 array(
     0: Stmt_Class(
         attrGroups: array(
@@ -99,6 +101,7 @@ array(
 <?php
 fn($foo, ) => $bar;
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_ArrowFunction(

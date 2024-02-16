@@ -9,6 +9,7 @@ try {
     $z;
 }
 -----
+!!php7
 array(
     0: Stmt_TryCatch(
         stmts: array(
@@ -22,10 +23,14 @@ array(
             0: Stmt_Catch(
                 types: array(
                     0: Name(
-                        name: X
+                        parts: array(
+                            0: X
+                        )
                     )
                     1: Name(
-                        name: Y
+                        parts: array(
+                            0: Y
+                        )
                     )
                 )
                 var: Expr_Variable(
@@ -42,10 +47,15 @@ array(
             1: Stmt_Catch(
                 types: array(
                     0: Name_FullyQualified(
-                        name: A
+                        parts: array(
+                            0: A
+                        )
                     )
                     1: Name(
-                        name: B\C
+                        parts: array(
+                            0: B
+                            1: C
+                        )
                     )
                 )
                 var: Expr_Variable(

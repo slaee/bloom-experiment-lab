@@ -18,16 +18,25 @@ $a::b();
 ${'a'}::b();
 $a['b']::c();
 -----
+!!php5
 array(
     0: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
+                comments: array(
+                    0: // method name variations
+                )
             )
             name: Identifier(
                 name: b
             )
             args: array(
+            )
+            comments: array(
+                0: // method name variations
             )
         )
         comments: array(
@@ -37,7 +46,9 @@ array(
     1: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
             name: Scalar_String(
                 value: b
@@ -49,7 +60,9 @@ array(
     2: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: A
+                parts: array(
+                    0: A
+                )
             )
             name: Expr_Variable(
                 name: b
@@ -59,15 +72,15 @@ array(
         )
     )
     3: Stmt_Expression(
-        expr: Expr_FuncCall(
+        expr: Expr_StaticCall(
+            class: Name(
+                parts: array(
+                    0: A
+                )
+            )
             name: Expr_ArrayDimFetch(
-                var: Expr_StaticPropertyFetch(
-                    class: Name(
-                        name: A
-                    )
-                    name: VarLikeIdentifier(
-                        name: b
-                    )
+                var: Expr_Variable(
+                    name: b
                 )
                 dim: Scalar_String(
                     value: c
@@ -78,16 +91,16 @@ array(
         )
     )
     4: Stmt_Expression(
-        expr: Expr_FuncCall(
+        expr: Expr_StaticCall(
+            class: Name(
+                parts: array(
+                    0: A
+                )
+            )
             name: Expr_ArrayDimFetch(
                 var: Expr_ArrayDimFetch(
-                    var: Expr_StaticPropertyFetch(
-                        class: Name(
-                            name: A
-                        )
-                        name: VarLikeIdentifier(
-                            name: b
-                        )
+                    var: Expr_Variable(
+                        name: b
                     )
                     dim: Scalar_String(
                         value: c
@@ -105,16 +118,27 @@ array(
         expr: Expr_ArrayDimFetch(
             var: Expr_StaticCall(
                 class: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
+                    comments: array(
+                        0: // array dereferencing
+                    )
                 )
                 name: Identifier(
                     name: b
                 )
                 args: array(
                 )
+                comments: array(
+                    0: // array dereferencing
+                )
             )
             dim: Scalar_String(
                 value: c
+            )
+            comments: array(
+                0: // array dereferencing
             )
         )
         comments: array(
@@ -124,12 +148,20 @@ array(
     6: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: static
+                parts: array(
+                    0: static
+                )
+                comments: array(
+                    0: // class name variations
+                )
             )
             name: Identifier(
                 name: b
             )
             args: array(
+            )
+            comments: array(
+                0: // class name variations
             )
         )
         comments: array(

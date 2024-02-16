@@ -6,7 +6,8 @@ use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 
-class NamespaceTest extends \PHPUnit\Framework\TestCase {
+class NamespaceTest extends \PHPUnit\Framework\TestCase
+{
     protected function createNamespaceBuilder($fqn) {
         return new Namespace_($fqn);
     }

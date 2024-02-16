@@ -61,7 +61,10 @@ array(
         params: array(
         )
         returnType: Name(
-            name: Foo\Bar
+            parts: array(
+                0: Foo
+                1: Bar
+            )
         )
         stmts: array(
         )

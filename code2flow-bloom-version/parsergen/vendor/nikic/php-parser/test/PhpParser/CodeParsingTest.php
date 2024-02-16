@@ -5,32 +5,56 @@ namespace PhpParser;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 
-class CodeParsingTest extends CodeTestAbstract {
+class CodeParsingTest extends CodeTestAbstract
+{
     /**
      * @dataProvider provideTestParse
      */
     public function testParse($name, $code, $expected, $modeLine) {
-        $modes = $this->parseModeLine($modeLine);
-        $parser = $this->createParser($modes['version'] ?? null);
-        list($stmts, $output) = $this->getParseOutput($parser, $code, $modes);
+        if (null !== $modeLine) {
+            $modes = array_fill_keys(explode(',', $modeLine), true);
+        } else {
+            $modes = [];
+        }
 
-        $this->assertSame($expected, $output, $name);
-        $this->checkAttributes($stmts);
+        list($parser5, $parser7) = $this->createParsers($modes);
+        list($stmts5, $output5) = $this->getParseOutput($parser5, $code, $modes);
+        list($stmts7, $output7) = $this->getParseOutput($parser7, $code, $modes);
+
+        if (isset($modes['php5'])) {
+            $this->assertSame($expected, $output5, $name);
+            $this->assertNotSame($expected, $output7, $name);
+        } elseif (isset($modes['php7'])) {
+            $this->assertNotSame($expected, $output5, $name);
+            $this->assertSame($expected, $output7, $name);
+        } else {
+            $this->assertSame($expected, $output5, $name);
+            $this->assertSame($expected, $output7, $name);
+        }
+
+        $this->checkAttributes($stmts5);
+        $this->checkAttributes($stmts7);
     }
 
-    public function createParser(?string $version): Parser {
-        $factory = new ParserFactory();
-        $version = $version === null
-            ? PhpVersion::getNewestSupported() : PhpVersion::fromString($version);
-        return $factory->createForVersion($version);
+    public function createParsers(array $modes) {
+        $lexer = new Lexer\Emulative(['usedAttributes' => [
+            'startLine', 'endLine',
+            'startFilePos', 'endFilePos',
+            'startTokenPos', 'endTokenPos',
+            'comments'
+        ]]);
+
+        return [
+            new Parser\Php5($lexer),
+            new Parser\Php7($lexer),
+        ];
     }
 
     // Must be public for updateTests.php
     public function getParseOutput(Parser $parser, $code, array $modes) {
         $dumpPositions = isset($modes['positions']);
-        $dumpOtherAttributes = isset($modes['attributes']);
 
-        $errors = new ErrorHandler\Collecting();
+        $errors = new ErrorHandler\Collecting;
         $stmts = $parser->parse($code, $errors);
 
         $output = '';
@@ -39,11 +63,7 @@ class CodeParsingTest extends CodeTestAbstract {
         }
 
         if (null !== $stmts) {
-            $dumper = new NodeDumper([
-                'dumpComments' => true,
-                'dumpPositions' => $dumpPositions,
-                'dumpOtherAttributes' => $dumpOtherAttributes,
-            ]);
+            $dumper = new NodeDumper(['dumpComments' => true, 'dumpPositions' => $dumpPositions]);
             $output .= $dumper->dump($stmts, $code);
         }
 
@@ -67,7 +87,8 @@ class CodeParsingTest extends CodeTestAbstract {
             return;
         }
 
-        $traverser = new NodeTraverser(new class () extends NodeVisitorAbstract {
+        $traverser = new NodeTraverser();
+        $traverser->addVisitor(new class extends NodeVisitorAbstract {
             public function enterNode(Node $node) {
                 $startLine = $node->getStartLine();
                 $endLine = $node->getEndLine();

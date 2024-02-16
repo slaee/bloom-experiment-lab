@@ -5,9 +5,10 @@ class Test {
     public static function create(): static {}
 }
 -----
+!!php7
 class Test
 {
-    public static function create(): static
+    public static function create() : static
     {
     }
 }

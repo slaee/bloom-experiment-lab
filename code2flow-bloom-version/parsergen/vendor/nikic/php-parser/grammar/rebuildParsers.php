@@ -1,17 +1,19 @@
-<?php declare(strict_types=1);
+<?php
 
 require __DIR__ . '/phpyLang.php';
 
-$parserToDefines = [
-    'Php7' => ['PHP7' => true],
-    'Php8' => ['PHP8' => true],
+$grammarFileToName = [
+    __DIR__ . '/php5.y' => 'Php5',
+    __DIR__ . '/php7.y' => 'Php7',
 ];
 
-$grammarFile    = __DIR__ . '/php.y';
+$tokensFile     = __DIR__ . '/tokens.y';
+$tokensTemplate = __DIR__ . '/tokens.template';
 $skeletonFile   = __DIR__ . '/parser.template';
 $tmpGrammarFile = __DIR__ . '/tmp_parser.phpy';
 $tmpResultFile  = __DIR__ . '/tmp_parser.php';
 $resultDir = __DIR__ . '/../lib/PhpParser/Parser';
+$tokensResultsFile = $resultDir . '/Tokens.php';
 
 $kmyacc = getenv('KMYACC');
 if (!$kmyacc) {
@@ -27,11 +29,13 @@ $optionKeepTmpGrammar = isset($options['--keep-tmp-grammar']);
 /// Main script ///
 ///////////////////
 
-foreach ($parserToDefines as $name => $defines) {
+$tokens = file_get_contents($tokensFile);
+
+foreach ($grammarFileToName as $grammarFile => $name) {
     echo "Building temporary $name grammar file.\n";
 
     $grammarCode = file_get_contents($grammarFile);
-    $grammarCode = replaceIfBlocks($grammarCode, $defines);
+    $grammarCode = str_replace('%tokens', $tokens, $grammarCode);
     $grammarCode = preprocessGrammar($grammarCode);
 
     file_put_contents($tmpGrammarFile, $grammarCode);
@@ -47,6 +51,10 @@ foreach ($parserToDefines as $name => $defines) {
     ensureDirExists($resultDir);
     file_put_contents("$resultDir/$name.php", $resultCode);
     unlink($tmpResultFile);
+
+    echo "Building token definition.\n";
+    $output = execCmd("$kmyacc -m $tokensTemplate $tmpGrammarFile");
+    rename($tmpResultFile, $tokensResultsFile);
 
     if (!$optionKeepTmpGrammar) {
         unlink($tmpGrammarFile);
@@ -64,17 +72,10 @@ function ensureDirExists($dir) {
 }
 
 function execCmd($cmd) {
-    $output = trim(shell_exec("$cmd 2>&1") ?? '');
+    $output = trim(shell_exec("$cmd 2>&1"));
     if ($output !== "") {
         echo "> " . $cmd . "\n";
         echo $output;
     }
     return $output;
-}
-
-function replaceIfBlocks(string $code, array $defines): string {
-    return preg_replace_callback('/\n#if\s+(\w+)\n(.*?)\n#endif/s', function ($matches) use ($defines) {
-        $value = $defines[$matches[1]] ?? false;
-        return $value ? $matches[2] : '';
-    }, $code);
 }

@@ -4,15 +4,16 @@ Array destructuring
 
 [$a, $b] = [$c, $d];
 [, $a, , , $b, ,] = $foo;
-[, [[$a, , $x]], $b] = $bar;
+[, [[$a]], $b] = $bar;
 ['a' => $b, 'b' => $a] = $baz;
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Assign(
-            var: Expr_List(
+            var: Expr_Array(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: a
@@ -20,7 +21,7 @@ array(
                         byRef: false
                         unpack: false
                     )
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: b
@@ -32,7 +33,7 @@ array(
             )
             expr: Expr_Array(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: c
@@ -40,7 +41,7 @@ array(
                         byRef: false
                         unpack: false
                     )
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: d
@@ -54,10 +55,10 @@ array(
     )
     1: Stmt_Expression(
         expr: Expr_Assign(
-            var: Expr_List(
+            var: Expr_Array(
                 items: array(
                     0: null
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: a
@@ -67,7 +68,7 @@ array(
                     )
                     2: null
                     3: null
-                    4: ArrayItem(
+                    4: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: b
@@ -85,30 +86,21 @@ array(
     )
     2: Stmt_Expression(
         expr: Expr_Assign(
-            var: Expr_List(
+            var: Expr_Array(
                 items: array(
                     0: null
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: null
-                        value: Expr_List(
+                        value: Expr_Array(
                             items: array(
-                                0: ArrayItem(
+                                0: Expr_ArrayItem(
                                     key: null
-                                    value: Expr_List(
+                                    value: Expr_Array(
                                         items: array(
-                                            0: ArrayItem(
+                                            0: Expr_ArrayItem(
                                                 key: null
                                                 value: Expr_Variable(
                                                     name: a
-                                                )
-                                                byRef: false
-                                                unpack: false
-                                            )
-                                            1: null
-                                            2: ArrayItem(
-                                                key: null
-                                                value: Expr_Variable(
-                                                    name: x
                                                 )
                                                 byRef: false
                                                 unpack: false
@@ -123,7 +115,7 @@ array(
                         byRef: false
                         unpack: false
                     )
-                    2: ArrayItem(
+                    2: Expr_ArrayItem(
                         key: null
                         value: Expr_Variable(
                             name: b
@@ -140,9 +132,9 @@ array(
     )
     3: Stmt_Expression(
         expr: Expr_Assign(
-            var: Expr_List(
+            var: Expr_Array(
                 items: array(
-                    0: ArrayItem(
+                    0: Expr_ArrayItem(
                         key: Scalar_String(
                             value: a
                         )
@@ -152,7 +144,7 @@ array(
                         byRef: false
                         unpack: false
                     )
-                    1: ArrayItem(
+                    1: Expr_ArrayItem(
                         key: Scalar_String(
                             value: b
                         )

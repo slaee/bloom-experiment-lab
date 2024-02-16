@@ -36,7 +36,7 @@ array(
                     0: Stmt_ClassMethod(
                         attrGroups: array(
                         )
-                        flags: PUBLIC (1)
+                        flags: MODIFIER_PUBLIC (1)
                         byRef: false
                         name: Identifier(
                             name: test
@@ -61,14 +61,20 @@ array(
                 flags: 0
                 name: null
                 extends: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 implements: array(
                     0: Name(
-                        name: B
+                        parts: array(
+                            0: B
+                        )
                     )
                     1: Name(
-                        name: C
+                        parts: array(
+                            0: C
+                        )
                     )
                 )
                 stmts: array(
@@ -92,10 +98,10 @@ array(
                     0: Stmt_Property(
                         attrGroups: array(
                         )
-                        flags: PUBLIC (1)
+                        flags: MODIFIER_PUBLIC (1)
                         type: null
                         props: array(
-                            0: PropertyItem(
+                            0: Stmt_PropertyProperty(
                                 name: VarLikeIdentifier(
                                     name: foo
                                 )
@@ -117,7 +123,9 @@ array(
                 flags: 0
                 name: null
                 extends: Name(
-                    name: A
+                    parts: array(
+                        0: A
+                    )
                 )
                 implements: array(
                 )
@@ -125,7 +133,9 @@ array(
                     0: Stmt_TraitUse(
                         traits: array(
                             0: Name(
-                                name: T
+                                parts: array(
+                                    0: T
+                                )
                             )
                         )
                         adaptations: array(
@@ -167,7 +177,7 @@ array(
             0: Stmt_ClassMethod(
                 attrGroups: array(
                 )
-                flags: PUBLIC (1)
+                flags: MODIFIER_PUBLIC (1)
                 byRef: false
                 name: Identifier(
                     name: test
@@ -184,7 +194,9 @@ array(
                                 flags: 0
                                 name: null
                                 extends: Name(
-                                    name: A
+                                    parts: array(
+                                        0: A
+                                    )
                                 )
                                 implements: array(
                                 )

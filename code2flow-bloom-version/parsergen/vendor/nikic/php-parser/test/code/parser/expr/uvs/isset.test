@@ -6,6 +6,7 @@ isset(([0, 1] + [])[0]);
 isset(['a' => 'b']->a);
 isset("str"->a);
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_Isset(
@@ -14,17 +15,17 @@ array(
                     var: Expr_BinaryOp_Plus(
                         left: Expr_Array(
                             items: array(
-                                0: ArrayItem(
+                                0: Expr_ArrayItem(
                                     key: null
-                                    value: Scalar_Int(
+                                    value: Scalar_LNumber(
                                         value: 0
                                     )
                                     byRef: false
                                     unpack: false
                                 )
-                                1: ArrayItem(
+                                1: Expr_ArrayItem(
                                     key: null
-                                    value: Scalar_Int(
+                                    value: Scalar_LNumber(
                                         value: 1
                                     )
                                     byRef: false
@@ -37,7 +38,7 @@ array(
                             )
                         )
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: 0
                     )
                 )
@@ -50,7 +51,7 @@ array(
                 0: Expr_PropertyFetch(
                     var: Expr_Array(
                         items: array(
-                            0: ArrayItem(
+                            0: Expr_ArrayItem(
                                 key: Scalar_String(
                                     value: a
                                 )

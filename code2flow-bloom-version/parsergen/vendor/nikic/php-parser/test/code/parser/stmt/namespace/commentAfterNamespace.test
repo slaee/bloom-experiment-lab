@@ -7,7 +7,9 @@ namespace Foo {}
 array(
     0: Stmt_Namespace(
         name: Name(
-            name: Foo
+            parts: array(
+                0: Foo
+            )
         )
         stmts: array(
         )

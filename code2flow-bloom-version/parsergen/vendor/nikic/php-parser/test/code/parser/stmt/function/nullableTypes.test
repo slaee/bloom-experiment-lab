@@ -5,6 +5,7 @@ Nullable types
 function test(?Foo $bar, ?string $foo) : ?Baz {
 }
 -----
+!!php7
 array(
     0: Stmt_Function(
         attrGroups: array(
@@ -20,7 +21,9 @@ array(
                 flags: 0
                 type: NullableType(
                     type: Name(
-                        name: Foo
+                        parts: array(
+                            0: Foo
+                        )
                     )
                 )
                 byRef: false
@@ -49,7 +52,9 @@ array(
         )
         returnType: NullableType(
             type: Name(
-                name: Baz
+                parts: array(
+                    0: Baz
+                )
             )
         )
         stmts: array(

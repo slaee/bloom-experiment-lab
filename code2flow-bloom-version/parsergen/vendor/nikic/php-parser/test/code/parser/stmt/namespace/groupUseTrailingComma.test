@@ -4,17 +4,22 @@ Group use can have trailing comma
 use A\{B,};
 use function A\{b,};
 -----
+!!php7
 array(
     0: Stmt_GroupUse(
         type: TYPE_UNKNOWN (0)
         prefix: Name(
-            name: A
+            parts: array(
+                0: A
+            )
         )
         uses: array(
-            0: UseItem(
+            0: Stmt_UseUse(
                 type: TYPE_NORMAL (1)
                 name: Name(
-                    name: B
+                    parts: array(
+                        0: B
+                    )
                 )
                 alias: null
             )
@@ -23,13 +28,17 @@ array(
     1: Stmt_GroupUse(
         type: TYPE_FUNCTION (2)
         prefix: Name(
-            name: A
+            parts: array(
+                0: A
+            )
         )
         uses: array(
-            0: UseItem(
+            0: Stmt_UseUse(
                 type: TYPE_UNKNOWN (0)
                 name: Name(
-                    name: b
+                    parts: array(
+                        0: b
+                    )
                 )
                 alias: null
             )

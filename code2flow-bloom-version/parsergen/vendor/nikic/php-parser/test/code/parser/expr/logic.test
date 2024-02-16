@@ -25,9 +25,15 @@ array(
         expr: Expr_BinaryOp_BooleanAnd(
             left: Expr_Variable(
                 name: a
+                comments: array(
+                    0: // boolean ops
+                )
             )
             right: Expr_Variable(
                 name: b
+            )
+            comments: array(
+                0: // boolean ops
             )
         )
         comments: array(
@@ -64,9 +70,15 @@ array(
         expr: Expr_BinaryOp_LogicalAnd(
             left: Expr_Variable(
                 name: a
+                comments: array(
+                    0: // logical ops
+                )
             )
             right: Expr_Variable(
                 name: b
+            )
+            comments: array(
+                0: // logical ops
             )
         )
         comments: array(
@@ -98,9 +110,15 @@ array(
             left: Expr_BinaryOp_BooleanAnd(
                 left: Expr_Variable(
                     name: a
+                    comments: array(
+                        0: // precedence
+                    )
                 )
                 right: Expr_Variable(
                     name: b
+                )
+                comments: array(
+                    0: // precedence
                 )
             )
             right: Expr_BinaryOp_BooleanAnd(
@@ -110,6 +128,9 @@ array(
                 right: Expr_Variable(
                     name: d
                 )
+            )
+            comments: array(
+                0: // precedence
             )
         )
         comments: array(

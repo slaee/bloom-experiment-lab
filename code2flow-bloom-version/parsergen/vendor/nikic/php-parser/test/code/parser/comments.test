@@ -24,6 +24,12 @@ array(
     0: Stmt_Expression(
         expr: Expr_Variable(
             name: var
+            comments: array(
+                0: /** doc 1 */
+                1: /* foobar 1 */
+                2: // foo 1
+                3: // bar 1
+            )
         )
         comments: array(
             0: /** doc 1 */
@@ -87,7 +93,7 @@ if (42) {}
 -----
 array(
     0: Stmt_If(
-        cond: Scalar_Int(
+        cond: Scalar_LNumber(
             value: 42
         )
         stmts: array(

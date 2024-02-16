@@ -9,6 +9,7 @@ try {
     $z;
 }
 -----
+!!php7
 try {
     $x;
 } catch (X|Y $e1) {

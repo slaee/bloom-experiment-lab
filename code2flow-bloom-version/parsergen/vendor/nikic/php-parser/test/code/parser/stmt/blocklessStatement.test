@@ -110,7 +110,7 @@ array(
     )
     5: Stmt_Declare(
         declares: array(
-            0: DeclareItem(
+            0: Stmt_DeclareDeclare(
                 key: Identifier(
                     name: a
                 )

@@ -43,7 +43,9 @@ __halt_compiler();
 array(
     0: Stmt_Namespace(
         name: Name(
-            name: A
+            parts: array(
+                0: A
+            )
         )
         stmts: array(
             0: Stmt_Expression(

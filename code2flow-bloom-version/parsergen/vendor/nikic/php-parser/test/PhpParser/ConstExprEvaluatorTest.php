@@ -5,7 +5,8 @@ namespace PhpParser;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 
-class ConstExprEvaluatorTest extends \PHPUnit\Framework\TestCase {
+class ConstExprEvaluatorTest extends \PHPUnit\Framework\TestCase
+{
     /** @dataProvider provideTestEvaluate */
     public function testEvaluate($exprString, $expected) {
         $parser = new Parser\Php7(new Lexer());
@@ -82,14 +83,14 @@ class ConstExprEvaluatorTest extends \PHPUnit\Framework\TestCase {
     }
 
     public function testEvaluateFallback() {
-        $evaluator = new ConstExprEvaluator(function (Expr $expr) {
+        $evaluator = new ConstExprEvaluator(function(Expr $expr) {
             if ($expr instanceof Scalar\MagicConst\Line) {
                 return 42;
             }
             throw new ConstExprEvaluationException();
         });
         $expr = new Expr\BinaryOp\Plus(
-            new Scalar\Int_(8),
+            new Scalar\LNumber(8),
             new Scalar\MagicConst\Line()
         );
         $this->assertSame(50, $evaluator->evaluateDirectly($expr));
@@ -118,12 +119,12 @@ class ConstExprEvaluatorTest extends \PHPUnit\Framework\TestCase {
     public function provideTestEvaluateSilently() {
         return [
             [
-                new Expr\BinaryOp\Mod(new Scalar\Int_(42), new Scalar\Int_(0)),
+                new Expr\BinaryOp\Mod(new Scalar\LNumber(42), new Scalar\LNumber(0)),
                 \Error::class,
                 'Modulo by zero'
             ],
             [
-                new Expr\BinaryOp\Plus(new Scalar\Int_(42), new Scalar\String_("1foo")),
+                new Expr\BinaryOp\Plus(new Scalar\LNumber(42), new Scalar\String_("1foo")),
                 \ErrorException::class,
                 \PHP_VERSION_ID >= 80000
                     ? 'A non-numeric value encountered'

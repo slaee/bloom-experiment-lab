@@ -7,9 +7,10 @@ Encapsed string negative var offsets
 "$a[-00]";
 "$a[@@{ -PHP_INT_MAX - 1 }@@]";
 -----
+!!php7
 array(
     0: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_ArrayDimFetch(
                     var: Expr_Variable(
@@ -23,13 +24,13 @@ array(
         )
     )
     1: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_ArrayDimFetch(
                     var: Expr_Variable(
                         name: a
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: -1
                     )
                 )
@@ -37,7 +38,7 @@ array(
         )
     )
     2: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_ArrayDimFetch(
                     var: Expr_Variable(
@@ -51,7 +52,7 @@ array(
         )
     )
     3: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_ArrayDimFetch(
                     var: Expr_Variable(
@@ -65,13 +66,13 @@ array(
         )
     )
     4: Stmt_Expression(
-        expr: Scalar_InterpolatedString(
+        expr: Scalar_Encapsed(
             parts: array(
                 0: Expr_ArrayDimFetch(
                     var: Expr_Variable(
                         name: a
                     )
-                    dim: Scalar_Int(
+                    dim: Scalar_LNumber(
                         value: @@{ -PHP_INT_MAX - 1 }@@
                     )
                 )

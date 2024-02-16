@@ -9,11 +9,14 @@ new Foo($a, $b, );
 unset($a, $b, );
 isset($a, $b, );
 -----
+!!php7
 array(
     0: Stmt_Expression(
         expr: Expr_FuncCall(
             name: Name(
-                name: foo
+                parts: array(
+                    0: foo
+                )
             )
             args: array(
                 0: Arg(
@@ -66,7 +69,9 @@ array(
     2: Stmt_Expression(
         expr: Expr_StaticCall(
             class: Name(
-                name: Foo
+                parts: array(
+                    0: Foo
+                )
             )
             name: Identifier(
                 name: bar
@@ -94,7 +99,9 @@ array(
     3: Stmt_Expression(
         expr: Expr_New(
             class: Name(
-                name: Foo
+                parts: array(
+                    0: Foo
+                )
             )
             args: array(
                 0: Arg(
