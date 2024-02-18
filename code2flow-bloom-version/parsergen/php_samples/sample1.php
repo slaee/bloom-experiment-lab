@@ -60,9 +60,6 @@ if(isset($_POST['login-submit']))
 	}
 }
 
-
-
-
 ?>
 
 
