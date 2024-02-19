@@ -21,7 +21,7 @@
 error_reporting(0);
 function Check_Admin($input)
 {
-    $input=iconv('UTF-8', 'US-ASCII//TRANSLIT', $input);   // Just to Normalize the string to UTF-8
+    $input = iconv ('UTF-8', 'US-ASCII//TRANSLIT', $input);// "Just to Normalize the string to UTF-8
     if(preg_match("/admin/i",$input))
     {
         return true;
@@ -77,6 +77,10 @@ if(isset($_POST['login-submit']))
 		echo "<script>alert('Please Fill All Fields')</script>";
 	}
 }
+
+echo "Test" .
+       "Test"
+        . "Test";
 
 
 
