@@ -1,8 +1,14 @@
-const express = require('express');
-const crypto = require('crypto');
 
+/**
+ * @type {import('better-sqlite3').Database}
+ * 
+ */
+
+const express = require('express'); // eslint-disable-line
+const crypto = require('crypto');
 const app = express();
 
+// Create a new database
 const db = require('better-sqlite3')('db.sqlite3');
 db.exec(`DROP TABLE IF EXISTS users;`);
 db.exec(`CREATE TABLE users(
@@ -11,6 +17,8 @@ db.exec(`CREATE TABLE users(
     password TEXT
 );`);
 
+
+// Create a new database
 const FLAG = process.env.FLAG || "dice{test_flag}";
 const PORT = process.env.PORT || 3000;
 
@@ -27,7 +35,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 app.post("/api/login", (req, res) => {
-    console.log(isAdmin)
     const { user, pass } = req.body;
     console.log("[REQUEST BODY] : ", req.body)
 

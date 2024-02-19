@@ -68,7 +68,7 @@ if(isset($_POST['login-submit']))
         }
         else
         {
-            send_to_api(file_get_contents("php://input"));
+            send_to_api(file_get_contents("php://input")); # Sending the data to the API
         }   
 
 	}
