@@ -174,7 +174,13 @@ try {
         return strpos($code, $a) <=> strpos($code, $b);
     });
 
-    print_r($variables);
+    for ($i = 0; $i < count($variables); $i++) {
+        echo $variables[$i];
+
+        if ($i < count($variables) - 1) {
+            echo ',';
+        }
+    }
 
 } catch (PhpParser\Error $e) {
     echo 'Parse Error: ', $e->getMessage();
