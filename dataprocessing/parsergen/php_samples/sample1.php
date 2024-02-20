@@ -1,22 +1,22 @@
 <?php
 
-// $a = 'Simple string';
-// function query($a) {
-//     echo $a;
-// }
-// query($a);
+$a = 'Simple string';
+function query($a) {
+    echo $a;
+}
+query($a);
 
-// $b = $_GET['q'];
-// $sql = `SELECT * FROM table WHERE id = ${b}`;
+$b = $_GET['q'];
+$sql = `SELECT * FROM table WHERE id = ${b}`;
 
-// if($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $c = $_POST['c'];
-//     $sql = `SELECT * FROM table WHERE id = ${c}`;
-// }
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $c = $_POST['c'];
+    $sql = `SELECT * FROM table WHERE id = ${c}`;
+}
 
-// function SQLQuery($sql) {
-//     echo $sql;
-// }
+function SQLQuery($sql) {
+    echo $sql;
+}
 
 error_reporting(0);
 function Check_Admin($input)
@@ -80,7 +80,8 @@ if(isset($_POST['login-submit']))
 
 echo "Test" .
        "Test"
-        . "Test";
+        . "Test"
+        ;
 
 
 
