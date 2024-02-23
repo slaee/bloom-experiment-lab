@@ -22,7 +22,17 @@ const variables = []
 function walk(node, parent) {
     if (node.type === 'VariableDeclaration') {
         node.declarations.forEach(decl => {
-            variables.push(decl.id.name)
+            if (decl.id.type === 'Identifier') {
+                variables.push(decl.id.name)
+            } else {
+                walk(decl.id, node) // should include the variables from destructuring 'ObjectPattern'
+            }
+        })
+    }
+
+    if (node.type === 'ObjectPattern') {
+        node.properties.forEach(prop => {
+            variables.push(prop.key.name)
         })
     }
 
