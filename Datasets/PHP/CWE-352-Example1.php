@@ -9,8 +9,7 @@ if (! session_is_registered("username")) {
 
 echo "invalid session detected!";
 
-// Redirect user to login page
-[...]
+// Redirect user to login page [...]
 
 exit;
 }
@@ -21,12 +20,12 @@ exit;
 
 update_profile();
 
-function update_profile {
+function update_profile () {
 
-// read in the data from $POST and send an update
+    // read in the data from $POST and send an update
 
-// to the database
-SendUpdateToDatabase($_SESSION['username'], $_POST['email']);
-[...]
-echo "Your profile has been successfully updated.";
+    // to the database
+    SendUpdateToDatabase($_SESSION['username'], $_POST['email']);
+    //...
+    echo "Your profile has been successfully updated.";
 }

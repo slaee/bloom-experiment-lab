@@ -6,4 +6,4 @@ function runEmployeeQuery($dbName, $name){
     $preparedStatement->execute(array(':name' => $name));
     return $preparedStatement->fetchAll();
 }    
-    $employeeRecord = runEmployeeQuery('EmployeeDB',$_GET['EmployeeName']);
+$employeeRecord = runEmployeeQuery('EmployeeDB',$_GET['EmployeeName']);

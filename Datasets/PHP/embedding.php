@@ -1,19 +1,4 @@
-// command injection
-
-<html> 
-<head><title>Embedded Challenge </title> </head>
-<body>
-<form> 
-<input name="username" placeholder="Enter Your UserName Here"/>
-<input type="Submit"/>
-</form>
-</body>
-</html>
-
 <?php
-
-
-
 
 if(isset($_GET["username"]))
 {

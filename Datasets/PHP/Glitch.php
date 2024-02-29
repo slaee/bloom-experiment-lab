@@ -100,8 +100,7 @@ if (!function_exists('out') ){
 		die(json_encode($array));
 	}
 }
-
-// ajax.php
+?>
 
 <?php
 include 'conf.php';

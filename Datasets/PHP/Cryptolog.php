@@ -1,5 +1,6 @@
 #https://pentest.blog/advisory-cryptolog-unauthenticated-remote-code-execution/
 
+<?php
 $user=$_POST['user'];
 $pass=$_POST['pass'];
 if($_GET['act']=='logout'){
@@ -11,3 +12,6 @@ $contenttowrite = $contenttowrite.'<tr><td colspan="2">Çıkış yaptınız!</td
   mysql_select_db(DB_DATABASE, $link) or die ("Out of service");
   $queryusercheck = mysql_query("SELECT count(id) FROM cc_users WHERE USERNAME='$user' AND `PASSWORD`='".computeHash($user, $pass)."'",$link);
   $usercheck_value = mysql_fetch_array ($queryusercheck);
+}
+
+?>
