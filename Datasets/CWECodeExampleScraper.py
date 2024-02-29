@@ -34,8 +34,6 @@ def clean_code(text,codetype=None):
     return text
 
 
-
-
 def process_cwe_definition(index):
     url = f"https://cwe.mitre.org/data/definitions/{index}.html"
     
@@ -85,7 +83,8 @@ def process_cwe_definition(index):
 def main():
     # run with multithreading
     with ThreadPoolExecutor(max_workers=10) as executor:
-        executor.map(process_cwe_definition, range(1, 2000))
+        # https://cwe.mitre.org/data/definitions/2000.html
+        executor.map(process_cwe_definition, range(1, 1419))
 
 
     # for i in range(20, 2000):
