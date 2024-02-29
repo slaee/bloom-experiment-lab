@@ -17,6 +17,8 @@ def scrape(url):
 def clean_code(text,codetype=None):
     # remove (bad code) from the text and remove the line
     text = re.sub(r'\(bad code\)', '', text)
+    # remove (good code) from the text and remove the line
+    text = re.sub(r'\(good code\)', '', text)
     # remove Example Language: PHP from the text
     text = re.sub(r'Example Language: PHP', '', text)
     text = re.sub(r'Example Language: JavaScript', '', text)
@@ -37,12 +39,13 @@ def clean_code(text,codetype=None):
 def process_cwe_definition(index):
     url = f"https://cwe.mitre.org/data/definitions/{index}.html"
     
-    php_file_name = f"CWE-{index}.php"
-    php_path_to_save = os.path.join("test/PHP/", php_file_name)
+    vuln_php_file_name = f"CWE-{index}.php"
+    vuln_php_path_to_save = os.path.join("test/Vulnerable/PHP/", vuln_php_file_name)
 
-    js_file_name = f"CWE-{index}.js"
-    js_path_to_save = os.path.join("test/JavaScript/", js_file_name)
+    vuln_js_file_name = f"CWE-{index}.js"
+    vuln_js_path_to_save = os.path.join("test/Vulnerable/JavaScript/", vuln_js_file_name)
 
+    
     #scrape
     print(f"[+] Scraping {url}")
     response = scrape(url)
@@ -50,32 +53,66 @@ def process_cwe_definition(index):
     html = response.content.decode('utf-8')
     pq = PyQuery(html)
     for elem in pq('div.indent.Bad'):
-        if pq(elem).find(".optheading:contains('PHP')"):
+        if pq(elem).find("div.optheading:contains('PHP')"):
             print(f"[+] Found PHP code in {url}")
             texts = pq(elem).text()
             texts = clean_code(texts, codetype="PHP")
-            print(f"[+] Saving to {php_path_to_save}")
-            with open(php_path_to_save, "w") as f:
-                f.write(texts)
-        if pq(elem).find(".optheading:contains('JavaScript')"):
+            print(f"[+] Saving to {vuln_php_path_to_save}")
+            with open(vuln_php_path_to_save, "a") as f:
+                f.write(texts + "\n")
+
+        if pq(elem).find("div.optheading:contains('JavaScript')"):
             print(f"[+] Found JavaScript code in {url}")
             texts = pq(elem).text()
             texts = clean_code(texts)
-            print(f"[+] Saving to {js_path_to_save}")
-            with open(js_path_to_save, "w") as f:
-                f.write(texts)
-        if pq(elem).find(".optheading:contains('HTML')"):
+            print(f"[+] Saving to {vuln_js_path_to_save}")
+            with open(vuln_js_path_to_save, "a") as f:
+                f.write(texts + "\n")
+
+        if pq(elem).find("div.optheading:contains('HTML')"):
             print(f"[+] Found HTML code in {url}")
             texts = pq(elem).text()
-            
-            # extract only js code inside <script> tag
             texts = clean_code(texts)
             html = PyQuery(texts)
             texts = html('script').text()
             if texts:
-                print(f"[+] Saving to {js_path_to_save}")
-                with open(js_path_to_save, "w") as f:
-                    f.write(texts)
+                print(f"[+] Saving to {vuln_js_path_to_save}")
+                with open(vuln_js_path_to_save, "a") as f:
+                    f.write(texts + "\n")
+
+    nonvuln_php_file_name = f"CWE-{index}.php"
+    nonvuln_php_path_to_save = os.path.join("test/NonVulnerable/PHP/", nonvuln_php_file_name)
+
+    nonvuln_js_file_name = f"CWE-{index}.js"
+    nonvuln_js_path_to_save = os.path.join("test/NonVulnerable/JavaScript/", nonvuln_js_file_name)
+
+    for elem in pq('div.indent.Good'):
+        if pq(elem).find("div.optheading:contains('PHP')"):
+            print(f"[+] Found PHP code in {url}")
+            texts = pq(elem).text()
+            texts = clean_code(texts, codetype="PHP")
+            print(f"[+] Saving to {nonvuln_php_path_to_save}")
+            with open(nonvuln_php_path_to_save, "a") as f:
+                f.write(texts + "\n")
+
+        if pq(elem).find("div.optheading:contains('JavaScript')"):
+            print(f"[+] Found JavaScript code in {url}")
+            texts = pq(elem).text()
+            texts = clean_code(texts)
+            print(f"[+] Saving to {nonvuln_js_path_to_save}")
+            with open(nonvuln_js_path_to_save, "a") as f:
+                f.write(texts + "\n")
+
+        if pq(elem).find("div.optheading:contains('HTML')"):
+            print(f"[+] Found HTML code in {url}")
+            texts = pq(elem).text()
+            texts = clean_code(texts)
+            html = PyQuery(texts)
+            texts = html('script').text()
+            if texts:
+                print(f"[+] Saving to {nonvuln_js_path_to_save}")
+                with open(nonvuln_js_path_to_save, "a") as f:
+                    f.write(texts + "\n")
 
     return True
 
@@ -84,7 +121,7 @@ def main():
     # run with multithreading
     with ThreadPoolExecutor(max_workers=10) as executor:
         # https://cwe.mitre.org/data/definitions/2000.html
-        executor.map(process_cwe_definition, range(1, 1419))
+        executor.map(process_cwe_definition, range(1, 1420))
 
 
     # for i in range(20, 2000):
