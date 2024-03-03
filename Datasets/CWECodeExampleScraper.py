@@ -40,10 +40,10 @@ def process_cwe_definition(index):
     url = f"https://cwe.mitre.org/data/definitions/{index}.html"
     
     vuln_php_file_name = f"CWE-{index}.php"
-    vuln_php_path_to_save = os.path.join("test/Vulnerable/PHP/", vuln_php_file_name)
+    vuln_php_path_to_save = os.path.join("Data/Vulnerable/PHP/", vuln_php_file_name)
 
     vuln_js_file_name = f"CWE-{index}.js"
-    vuln_js_path_to_save = os.path.join("test/Vulnerable/JavaScript/", vuln_js_file_name)
+    vuln_js_path_to_save = os.path.join("Data/Vulnerable/JavaScript/", vuln_js_file_name)
 
     
     #scrape
@@ -81,10 +81,10 @@ def process_cwe_definition(index):
                     f.write(texts + "\n")
 
     nonvuln_php_file_name = f"CWE-{index}.php"
-    nonvuln_php_path_to_save = os.path.join("test/NonVulnerable/PHP/", nonvuln_php_file_name)
+    nonvuln_php_path_to_save = os.path.join("Data/NonVulnerable/PHP/", nonvuln_php_file_name)
 
     nonvuln_js_file_name = f"CWE-{index}.js"
-    nonvuln_js_path_to_save = os.path.join("test/NonVulnerable/JavaScript/", nonvuln_js_file_name)
+    nonvuln_js_path_to_save = os.path.join("Data/NonVulnerable/JavaScript/", nonvuln_js_file_name)
 
     for elem in pq('div.indent.Good'):
         if pq(elem).find("div.optheading:contains('PHP')"):
