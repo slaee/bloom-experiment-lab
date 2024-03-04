@@ -1,5 +1,7 @@
 <?php
 $name = $_GET['name'];
-$query = "SELECT * FROM users WHERE name='$name'";
-$result = mysqli_query($connection, $query);
+$stmt = $connection->prepare("SELECT * FROM users WHERE name=?");
+$stmt->bind_param("s", $name);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>

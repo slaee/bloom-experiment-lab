@@ -1,5 +1,5 @@
 <?php
-$name = $_POST['name'];
+$name = $userName;
 $stmt = $connection->prepare("SELECT * FROM users WHERE name=?");
 $stmt->bind_param("s", $name);
 $stmt->execute();
