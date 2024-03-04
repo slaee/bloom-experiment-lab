@@ -1,0 +1,247 @@
+$b = $_GET['q']; $sql = `SELECT * FROM table WHERE id = ${b}`;:::::5
+$input = $_POST['name']; echo 'Hello, ' . $input;:::::0
+$user_input = $_GET['query']; echo 'Search results for: ' . $user_input;:::::1
+$cmd = $_GET['cmd']; system($cmd);:::::2
+$username = $_POST['username']; $password = $_POST['password']; login($username, $password);:::::6
+var test_string = \"Bad characters: $@#\";var bad_pattern = /^(\w+\s?)*$/i;var result = test_string.search(bad_pattern);:::::6
+for (const attr of pathArray) { if (typeof objectToModify[attr] !== 'object') { objectToModify[attr] = {}; } objectToModify = objectToModify[attr]; } objectToModify[attributeToSet] = value;:::::3
+include($_GET['page']);:::::4
+var data = JSON.parse(request.body); Object.assign({}, data);:::::3
+$cmd = $_GET['cmd']; exec($cmd);:::::2
+$cmd = $_GET['cmd']; shell_exec($cmd);:::::2
+$cmd = $_GET['cmd']; passthru($cmd);:::::2
+$cmd = $_GET['cmd']; popen($cmd, 'r');:::::2
+$cmd = $_GET['cmd']; proc_open($cmd, array(0 => array('pipe', 'r'), 1 => array('pipe', 'w'), 2 => array('pipe', 'w')), $pipes);:::::2
+var user = JSON.parse(request.body); Object.setPrototypeOf(user, null);:::::3
+$param = $_GET['param']; $sql = "SELECT * FROM table WHERE id = $param";:::::5
+echo $_GET['message'];:::::1
+$name = $_GET['name']; include("$name.php");:::::4
+$input = $_POST['input']; echo "Output: $input";:::::0
+$user_input = $_GET['input']; echo 'You searched for: ' . htmlspecialchars($user_input);:::::1
+$cmd = $_GET['cmd']; eval($cmd);:::::2
+$file = $_GET['file']; readfile("/var/www/$file");:::::4
+$var = $_GET['var']; $output = system("ls $var"); echo $output;:::::2
+$query = $_POST['query']; $result = mysqli_query($conn, "SELECT * FROM users WHERE username='$query'");:::::5
+$code = $_GET['code']; preg_replace("/.*/e", $_GET['replacement'], $code);:::::2
+$username = $_POST['username']; $password = $_POST['password']; mysql_query("SELECT * FROM users WHERE username='$username' AND password='$password'");:::::5
+$id = $_GET['id']; $file = fopen("logs/$id.txt", "r");:::::4
+$input = $_GET['input']; echo "You entered: $input";:::::0
+$input = $_POST['input']; $output = htmlspecialchars($input); echo "Output: $output";:::::0
+$user = $_GET['user']; system("del /F $user");:::::2
+$id = $_GET['id']; $file = fopen("uploads/$id.txt", "r");:::::4
+$user = $_GET['user']; system("rm -rf /home/$user");:::::2
+$data = $_GET['data']; file_put_contents("logs.txt", $data);:::::4
+$id = $_GET['id']; $file = fopen("files/$id.txt", "r");:::::4
+$input = $_GET['input']; echo shell_exec("ls $input");:::::2
+$input = $_GET['input']; system("echo $input");:::::2
+$filename = $_GET['filename']; include("/path/to/includes/$filename");:::::4
+$name = $_GET['name']; $file = file_get_contents("/var/www/files/$name"); echo $file;:::::4
+$id = $_GET['id']; $file = fopen("/var/www/logs/$id.txt", "r");:::::4
+$input = $_GET['input']; echo htmlentities($input);:::::1
+$name = $_GET['name']; include("$name.html");:::::4
+$param = $_GET['param']; system("echo $param > output.txt");:::::2
+$input = $_GET['input']; echo filter_var($input, FILTER_SANITIZE_STRING);:::::6
+$username = $_GET['username']; $password = $_GET['password']; mysqli_query($conn, "SELECT * FROM users WHERE username='$username' AND password='$password'");:::::5
+$input = $_GET['input']; echo strip_tags($input);:::::1
+$input = $_POST['input']; echo htmlentities($input);:::::1
+$id = $_GET['id']; $file = fopen("/var/www/uploads/$id.txt", "r");:::::4
+$param = $_GET['param']; $file = file_get_contents("/path/to/$param"); echo $file;:::::4
+$id = $_GET['id']; $file = fopen("/var/www/logs/$id.txt", "r");:::::4
+$user = $_GET['user']; system("cat /etc/passwd | grep $user");:::::2
+$name = $_GET['name']; readfile("/var/www/files/$name");:::::4
+$input = $_GET['input']; echo htmlspecialchars($input);:::::1
+$id = $_GET['id']; $file = fopen("/var/www/uploads/$id.txt", "r");:::::4
+$param = $_GET['param']; echo `ls $param`;:::::2
+$input = $_GET['input']; echo htmlentities($input);:::::1
+$param = $_GET['param']; system("cat /etc/passwd | grep $param");:::::2
+$user = $_GET['user']; system("cat /etc/passwd | grep $user");:::::2
+$username = $_POST['username']; $password = $_POST['password']; exec("login $username $password");:::::2
+$username = $_GET['username']; $password = $_GET['password']; shell_exec("login $username $password");:::::2
+$username = $_GET['username']; $password = $_GET['password']; passthru("login $username $password");:::::2
+$username = $_GET['username']; $password = $_GET['password']; popen("login $username $password", 'r');:::::2
+$username = $_GET['username']; $password = $_GET['password']; proc_open("login $username $password", array(0 => array('pipe', 'r'), 1 => array('pipe', 'w'), 2 => array('pipe', 'w')), $pipes);:::::2
+$username = $_GET['username']; $password = $_GET['password']; shell_exec("login $username $password");:::::2
+$id = $_GET['id']; $sql = "SELECT * FROM users WHERE id = $id";:::::5
+$name = $_GET['name']; echo "Hello, <script>alert('$name');</script>";:::::1
+$cmd = $_GET['cmd']; exec("ls " . escapeshellarg($cmd));:::::2
+$data = json_decode($_GET['data'], true); $obj = new stdClass(); foreach ($data as $key => $value) { $obj->$key = $value; }:::::3
+include("pages/" . $_GET['page']);:::::4
+$unsafe_input = $_GET['input']; eval("\$result = $unsafe_input;");:::::6
+$user_id = $_GET['id']; if ($user_id == 1) { echo file_get_contents("/etc/passwd"); }:::::7
+$query = "SELECT * FROM users WHERE username = '{$_POST['username']}' AND password = '{$_POST['password']}'";:::::5
+$name = $_GET['name']; echo "<div>" . htmlentities($name) . "</div>";:::::1
+$cmd = $_GET['cmd']; shell_exec("ls " . escapeshellcmd($cmd));:::::2
+$data = json_decode($_GET['data'], true); $obj = (object)[]; foreach ($data as $key => $value) { $obj->$key = $value; }:::::3
+include($_GET['file'] . ".php");:::::4
+$user_input = $_GET['input']; preg_replace('/\w/', '', $user_input);:::::6
+if ($_GET['debug'] == 'true') { echo json_encode($_SERVER); }:::::7
+$id = $_POST['id']; $sql = "SELECT * FROM users WHERE id = $id";:::::5
+$name = $_POST['name']; echo "Hello, " . htmlspecialchars($name);:::::1
+$cmd = $_POST['cmd']; system("echo " . escapeshellarg($cmd));:::::2
+$input = json_decode($_GET['data'], true); $obj = json_decode('{}'); foreach ($input as $key => $value) { $obj->$key = $value; }:::::3
+$page = $_GET['page']; include("$page.php");:::::4
+$name = $_GET['name']; echo "Hello, $name";:::::6
+if ($_GET['debug'] == 'true') { echo json_encode($_ENV); }:::::7
+$id = $_GET['id']; $query = "SELECT * FROM users WHERE id = '$id'";:::::5
+$input = $_GET['input']; echo "<p>" . htmlentities($input) . "</p>";:::::1
+$cmd = $_GET['cmd']; system("ls " . escapeshellcmd($cmd));:::::2
+$input = json_decode($_GET['data'], true); $obj = json_decode('{}'); foreach ($input as $key => $value) { $obj->{$key} = $value; }:::::3
+$page = $_GET['page']; include("pages/{$page}.php");:::::4
+$input = $_GET['input']; preg_replace('/\W/', '', $input);:::::6
+if ($_GET['debug'] == 'true') { echo json_encode($_SESSION); }:::::7
+$id = $_GET['id']; $sql = "SELECT * FROM users WHERE id = '$id'";:::::5
+$name = $_GET['name']; echo "Hello, <b>" . htmlspecialchars($name) . "</b>";:::::1
+$cmd = $_GET['cmd']; passthru("ls " . escapeshellarg($cmd));:::::2
+$input = json_decode($_GET['data'], true); $obj = json_decode('{}'); foreach ($input as $key => $value) { $obj->{$key} = $value; }:::::3
+$page = $_GET['page']; include("pages/" . $page . ".php");:::::4
+$name = $_GET['name']; echo "Hello, $name!";:::::6
+if ($_GET['debug'] == 'true') { echo json_encode($_COOKIE); }:::::7
+$id = $_GET['id']; $sql = "SELECT * FROM users WHERE id = '$id'";:::::5
+$name = $_GET['name']; echo "<p>Welcome, " . htmlspecialchars($name) . "!</p>";:::::1
+$cmd = $_GET['cmd']; shell_exec("ls " . escapeshellcmd($cmd));:::::2
+$input = json_decode($_GET['data'], true); $obj = json_decode('{}'); foreach ($input as $key => $value) { $obj->{$key} = $value; }:::::3
+$page = $_GET['page']; include("pages/{$page}.php");:::::4
+$input = $_GET['input']; preg_match('/^[a-zA-Z]+$/', $input);:::::6
+if ($_GET['debug'] == 'true') { echo json_encode($_FILES); }:::::7
+$id = $_POST['id']; $query = "SELECT * FROM users WHERE id = '$id'";:::::5
+$name = $_POST['name']; echo "Hello, " . htmlspecialchars($name) . "!";:::::1
+$cmd = $_POST['cmd']; passthru("echo " . escapeshellarg($cmd));:::::2
+$data = json_decode($_GET['data'], true); $obj = json_decode('{}'); foreach ($data as $key => $value) { $obj->{$key} = $value; }:::::3
+$page = $_GET['page']; include("pages/{$page}.php");:::::4
+$name = $_GET['name']; echo "Hello, $name!";:::::6
+if ($_GET['debug'] == 'true') { echo json_encode(get_defined_vars()); }:::::7
+$input = $_GET['data']; echo "Received: " . htmlspecialchars($input);:::::0
+$age = $_POST['age']; if ($age >= 18) { echo "You are an adult."; } else { echo "You are a minor."; }:::::0
+$name = $_GET['name']; echo "Hello, $name!";:::::0
+$numbers = [1, 2, 3, 4, 5]; echo json_encode($numbers);:::::0
+$input = $_GET['input']; echo "You entered: $input";:::::0
+$x = 5; $y = 10; echo "The sum is: " . ($x + $y);:::::0
+$color = $_GET['color']; echo "Selected color: $color";:::::0
+$fruit = $_POST['fruit']; echo "Selected fruit: $fruit";:::::0
+$input = $_POST['input']; echo strtoupper($input);:::::0
+$username = $_POST['username']; echo "Welcome, $username!";:::::0
+$names = ['Alice', 'Bob', 'Charlie']; echo json_encode($names);:::::0
+$age = $_POST['age']; echo "Your age is: $age";:::::0
+$email = $_GET['email']; echo "Email received: $email";:::::0
+$input = $_GET['data']; eval("echo 'Received: $input';");:::::6
+$id = $_GET['id']; $sql = "SELECT * FROM users WHERE id = '$id'";:::::5
+$name = $_GET['name']; echo "Hello, <script>alert('$name');</script>";:::::1
+$cmd = $_GET['cmd']; system($cmd);:::::2
+$username = $_POST['username']; $password = $_POST['password']; login($username, $password);:::::6
+$cmd = $_GET['cmd']; exec($cmd);:::::2
+$cmd = $_GET['cmd']; shell_exec($cmd);:::::2
+$cmd = $_GET['cmd']; passthru($cmd);:::::2
+$cmd = $_GET['cmd']; popen($cmd, 'r');:::::2
+$cmd = $_GET['cmd']; proc_open($cmd, array(0 => array('pipe', 'r'), 1 => array('pipe', 'w'), 2 => array('pipe', 'w')), $pipes);:::::2
+$user_input = $_GET['query']; echo 'Search results for: ' . $user_input;:::::1
+$cmd = $_GET['cmd']; system("echo $cmd");:::::2
+$input = $_GET['input']; preg_replace('/\w/', '', $input);:::::6
+$name = $_GET['name']; echo "<div>" . htmlentities($name) . "</div>";:::::1
+$id = $_POST['id']; $query = "SELECT * FROM users WHERE id = '$id'";:::::5
+$name = $_GET['name']; echo "Hello, <b>" . htmlspecialchars($name) . "</b>";:::::1
+$cmd = $_GET['cmd']; passthru("echo " . escapeshellarg($cmd));:::::2
+$input = $_GET['data']; $obj = new stdClass(); foreach ($input as $key => $value) { $obj->$key = $value; }:::::3
+$page = $_GET['page']; include("$page.php");:::::4
+$input = $_GET['data']; echo "Received: " . htmlspecialchars($input);:::::0
+$age = $_POST['age']; if ($age >= 18) { echo "You are an adult."; } else { echo "You are a minor."; }:::::0
+$name = $_GET['name']; echo "Hello, $name!";:::::0
+$numbers = [1, 2, 3, 4, 5]; echo json_encode($numbers);:::::0
+$input = $_GET['input']; echo "You entered: $input";:::::0
+$x = 5; $y = 10; echo "The sum is: " . ($x + $y);:::::0
+$color = $_GET['color']; echo "Selected color: $color";:::::0
+$fruit = $_POST['fruit']; echo "Selected fruit: $fruit";:::::0
+$input = $_POST['input']; echo strtoupper($input);:::::0
+$username = $_POST['username']; echo "Welcome, $username!";:::::0
+$names = ['Alice', 'Bob', 'Charlie']; echo json_encode($names);:::::0
+$age = $_POST['age']; echo "Your age is: $age";:::::0
+$email = $_GET['email']; echo "Email received: $email";:::::0
+$id = $_GET['id']; echo "User ID: $id";:::::0
+$name = $_POST['name']; echo "Hello, $name!";:::::0
+$numbers = [1, 2, 3, 4, 5]; foreach ($numbers as $number) { echo "$number "; }:::::0
+$message = $_POST['message']; echo "Message received: $message";:::::0
+$fruit = $_GET['fruit']; $basket = ["apple", "orange", "banana"]; if (in_array($fruit, $basket)) { echo "Fruit is available."; } else { echo "Fruit is not available."; }:::::0
+$input = $_POST['input']; echo "You entered: $input";:::::0
+$x = 10; $y = 5; echo "The difference is: " . ($x - $y);:::::0
+$color = $_GET['color']; echo "Selected color: $color";:::::0
+$fruit = $_POST['fruit']; echo "Selected fruit: $fruit";:::::0
+$input = $_POST['input']; echo strtoupper($input);:::::0
+$username = $_POST['username']; echo "Welcome, $username!";:::::0
+$names = ['Alice', 'Bob', 'Charlie']; echo json_encode($names);:::::0
+$age = $_POST['age']; echo "Your age is: $age";:::::0
+$email = $_GET['email']; echo "Email received: $email";:::::0
+$id = $_GET['id']; echo "User ID: $id";:::::0
+$name = $_POST['name']; echo "Hello, $name!";:::::0
+$numbers = [1, 2, 3, 4, 5]; foreach ($numbers as $number) { echo "$number "; }:::::0
+$message = $_POST['message']; echo "Message received: $message";:::::0
+$input = $_GET['input']; echo "You entered: $input";:::::0
+let data = prompt("Enter some data:"); console.log("Received: " + data);:::::0
+let age = parseInt(prompt("Enter your age:")); if (age >= 18) { console.log("You are an adult."); } else { console.log("You are a minor."); }:::::0
+let name = prompt("Enter your name:"); console.log("Hello, " + name + "!");:::::0
+let numbers = [1, 2, 3, 4, 5]; console.log(JSON.stringify(numbers));:::::0
+let input = prompt("Enter something:"); console.log("You entered: " + input);:::::0
+let x = 5, y = 10; console.log("The sum is: " + (x + y));:::::0
+let color = prompt("Enter a color:"); console.log("Selected color: " + color);:::::0
+let fruit = prompt("Enter your favorite fruit:"); console.log("Selected fruit: " + fruit);:::::0
+let input = prompt("Enter something:"); console.log("You entered: " + input.toUpperCase());:::::0
+let username = prompt("Enter your username:"); console.log("Welcome, " + username + "!");:::::0
+let names = ["Alice", "Bob", "Charlie"]; console.log(JSON.stringify(names));:::::0
+let age = parseInt(prompt("Enter your age:")); console.log("Your age is: " + age);:::::0
+let email = prompt("Enter your email:"); console.log("Email received: " + email);:::::0
+let id = prompt("Enter your user ID:"); console.log("User ID: " + id);:::::0
+let name = prompt("Enter your name:"); console.log("Hello, " + name + "!");:::::0
+let numbers = [1, 2, 3, 4, 5]; for (let number of numbers) { console.log(number); }:::::0
+let message = prompt("Enter a message:"); console.log("Message received: " + message);:::::0
+let fruit = prompt("Enter a fruit:"); let basket = ["apple", "orange", "banana"]; if (basket.includes(fruit)) { console.log("Fruit is available."); } else { console.log("Fruit is not available."); }:::::0
+let data = prompt("Enter some data:"); eval("console.log('Received: ' + data);");:::::6
+let name = prompt("Enter your name:"); document.write("Hello, " + name + "!");:::::1
+let userInput = prompt("Enter something:"); document.getElementById("result").innerHTML = "You entered: " + userInput;:::::1
+let command = prompt("Enter a command:"); const result = require('child_process').execSync(command).toString(); console.log(result);:::::2
+let username = prompt("Enter your username:"); let password = prompt("Enter your password:"); if (username === "admin" && password === "password") { console.log("Login successful."); } else { console.log("Login failed."); }:::::6
+let command = prompt("Enter a command:"); window.location.href = "https://www.example.com/" + command;:::::2
+let input = prompt("Enter something:"); document.getElementById("result").innerHTML = input.replace(/\w/g, "");:::::1
+let id = prompt("Enter your user ID:"); fetch("https://example.com/users/" + id).then(response => response.json()).then(data => console.log(data));:::::5
+let name = prompt("Enter your name:"); document.write("Hello, <b>" + name + "</b>!");:::::1
+let command = prompt("Enter a command:"); window.open("https://www.example.com/?cmd=" + command);:::::2
+let data = prompt("Enter some data:"); document.write("<div>" + data + "</div>");:::::1
+let id = prompt("Enter your user ID:"); let xhr = new XMLHttpRequest(); xhr.open("GET", "/users?id=" + id, true); xhr.send();:::::5
+let name = prompt("Enter your name:"); document.body.innerHTML = "<h1>Hello, " + name + "!</h1>";:::::1
+let userInput = prompt("Enter something:"); document.getElementById("output").innerText = userInput;:::::1
+let command = prompt("Enter a command:"); let output = require('child_process').execSync(command).toString(); console.log(output);:::::2
+let input = prompt("Enter some data:"); let obj = {}; eval("obj = " + input); console.log(obj);:::::6
+let page = prompt("Enter a page name:"); window.location.href = page + ".html";:::::2
+let input = prompt("Enter something:"); document.body.innerHTML = input;:::::1
+let name = prompt("Enter your name:"); alert("Hello, " + name + "!");:::::1
+let command = prompt("Enter a command:"); console.log(`Output: ${execSync(command).toString()}`);:::::2
+let data = prompt("Enter some data:"); new Function(data)();:::::6
+let input = prompt("Enter some data:"); document.body.innerHTML = input;:::::1
+let username = prompt("Enter your username:"); if (username === "admin") { window.location.href = "admin-panel.html"; } else { window.location.href = "user-panel.html"; }:::::6
+let userInput = prompt("Enter something:"); document.write("<div>" + userInput + "</div>");:::::1
+let command = prompt("Enter a command:"); console.log(`Output: ${execSync(command).toString()}`);:::::2
+let data = prompt("Enter some data:"); document.body.innerHTML = "<div>" + data + "</div>";:::::1
+let id = prompt("Enter your user ID:"); let xhr = new XMLHttpRequest(); xhr.open("GET", "/users?id=" + id, true); xhr.onreadystatechange = function() { if (xhr.readyState == 4 && xhr.status == 200) { console.log(xhr.responseText); } }; xhr.send();:::::5
+let name = prompt("Enter your name:"); console.log(`<h1>Hello, ${name}!</h1>`);:::::1
+let input = prompt("Enter something:"); let script = document.createElement("script"); script.textContent = input; document.head.appendChild(script);:::::1
+let command = prompt("Enter a command:"); console.log(`Output: ${execSync(command).toString()}`);:::::2
+let data = prompt("Enter some data:"); document.write(data);:::::1
+let name = prompt("Enter your name:"); console.log("Hello, <b>" + name + "</b>!");:::::1
+let command = prompt("Enter a command:"); let output = require('child_process').execSync(command).toString(); console.log(output);:::::2
+let input = prompt("Enter some data:"); document.body.innerHTML = "<div>" + input + "</div>";:::::1
+let id = prompt("Enter your user ID:"); fetch("/users/" + id).then(response => response.json()).then(data => console.log(data));:::::5
+let name = prompt("Enter your name:"); document.write("<h1>Hello, " + name + "!</h1>");:::::1
+let userInput = prompt("Enter something:"); document.getElementById("output").innerText = userInput;:::::1
+let command = prompt("Enter a command:"); console.log(`Output: ${execSync(command).toString()}`);:::::2
+let data = prompt("Enter some data:"); document.write(data);:::::1
+let input = prompt("Enter something:"); console.log("You entered: " + input);:::::0
+let x = 10, y = 5; console.log("The difference is: " + (x - y));:::::0
+let color = prompt("Enter a color:"); console.log("Selected color: " + color);:::::0
+let fruit = prompt("Enter your favorite fruit:"); console.log("Selected fruit: " + fruit);:::::0
+let input = prompt("Enter something:"); console.log("You entered: " + input.toUpperCase());:::::0
+let username = prompt("Enter your username:"); console.log("Welcome, " + username + "!");:::::0
+let names = ["Alice", "Bob", "Charlie"]; console.log(JSON.stringify(names));:::::0
+let age = parseInt(prompt("Enter your age:")); console.log("Your age is: " + age);:::::0
+let email = prompt("Enter your email:"); console.log("Email received: " + email);:::::0
+let id = prompt("Enter your user ID:"); console.log("User ID: " + id);:::::0
+let name = prompt("Enter your name:"); console.log("Hello, " + name + "!");:::::0
+let numbers = [1, 2, 3, 4, 5]; for (let number of numbers) { console.log(number); }:::::0
+let message = prompt("Enter a message:"); console.log("Message received: " + message);:::::0
+let input = prompt("Enter something:"); console.log("You entered: " + input);:::::0
