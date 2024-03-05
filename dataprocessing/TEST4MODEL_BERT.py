@@ -5,16 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import numpy as np
 
-# Sample data (replace with your dataset)
-# code_snippets = [
-#     "$b = $_GET['q']; $sql = `SELECT * FROM table WHERE id = ${b}`",  # SQL Injection
-#     "$input = $_POST['name']; echo 'Hello, ' . $input;",  # No vulnerability
-#     "$user_input = $_GET['query']; echo 'Search results for: ' . $user_input;",  # XSS
-#     "$cmd = $_GET['cmd']; system($cmd);",  # Command Injection
-#     "$username = $_POST['username']; $password = $_POST['password']; login($username, $password);"  # Bypassing input validation
-# ]
-# labels = [2, 0, 1, 3, 4]  # 0: No vulnerability, 1: XSS, 2: Command Injection, 3: SQL Injection, 4: Bypassing input validation
-
 code_snippets = []
 labels = []
 with open('datasets.csv', 'r') as file:
@@ -46,7 +36,15 @@ class CustomDataset(Dataset):
         text = self.texts[idx]
         label = self.labels[idx]
 
-        encoding = self.tokenizer(text, add_special_tokens=True, truncation=True, max_length=self.max_length, padding='max_length', return_tensors='pt')
+        encoding = self.tokenizer(
+            text, 
+            add_special_tokens=True, 
+            truncation=True, 
+            max_length=self.max_length, 
+            padding='max_length', 
+            return_tensors='pt'
+        )
+        
         input_ids = encoding['input_ids'].squeeze(0)
         attention_mask = encoding['attention_mask'].squeeze(0)
 
@@ -56,19 +54,26 @@ class CustomDataset(Dataset):
             'labels': torch.tensor(label, dtype=torch.long)
         }
 
+# Check if GPU is available
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Using device:", device)
+
+
 # Initialize BERT tokenizer and model
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=len(set(labels)))
+model.to(device)
 
 # Define training parameters
 batch_size = 4
-max_length = 128
+max_length = 60
 learning_rate = 2e-5
-num_epochs = 3
+num_epochs = 10
 
 # Create DataLoader for training and validation sets
 train_dataset = CustomDataset(train_texts, train_labels, tokenizer, max_length)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+
 
 val_dataset = CustomDataset(val_texts, val_labels, tokenizer, max_length)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
@@ -81,9 +86,9 @@ loss_fn = torch.nn.CrossEntropyLoss()
 for epoch in range(num_epochs):
     model.train()
     for batch in train_loader:
-        input_ids = batch['input_ids']
-        attention_mask = batch['attention_mask']
-        labels = batch['labels']
+        input_ids = batch['input_ids'].to(device)
+        attention_mask = batch['attention_mask'].to(device)
+        labels = batch['labels'].to(device)
 
         optimizer.zero_grad()
 
@@ -97,17 +102,21 @@ for epoch in range(num_epochs):
     val_preds = []
     val_true = []
     for batch in val_loader:
-        input_ids = batch['input_ids']
-        attention_mask = batch['attention_mask']
-        labels = batch['labels']
+        input_ids = batch['input_ids'].to(device)
+        attention_mask = batch['attention_mask'].to(device)
+        labels = batch['labels'].to(device)
 
         with torch.no_grad():
             outputs = model(input_ids, attention_mask=attention_mask)
             logits = outputs.logits
 
-        preds = np.argmax(logits.detach().numpy(), axis=1)
+
+        preds = np.argmax(logits.detach().cpu().numpy(), axis=1)  # Move predictions back to CPU
         val_preds.extend(preds)
-        val_true.extend(labels.numpy())
+        val_true.extend(labels.cpu().numpy())  # Move labels back to CPU
+        # preds = np.argmax(logits.detach().numpy(), axis=1)
+        # val_preds.extend(preds)
+        # val_true.extend(labels.numpy())
 
     print("Epoch:", epoch + 1)
     print("Validation Report:")
@@ -115,7 +124,7 @@ for epoch in range(num_epochs):
 
 # Prediction
 new_code_snippet = ["$input = $_GET['id']; $sql = `SELECT * FROM users WHERE id = ${input}`"]
-encoding = tokenizer(new_code_snippet, add_special_tokens=True, truncation=True, max_length=max_length, padding='max_length', return_tensors='pt')
+encoding = tokenizer(new_code_snippet, add_special_tokens=True, truncation=True, max_length=max_length, padding='max_length', return_tensors='pt').to(device)
 
 with torch.no_grad():
     outputs = model(**encoding)
