@@ -14,7 +14,8 @@ $code = file_get_contents($filename);
 
 $parser = (new ParserFactory())->createForNewestSupportedVersion();
 
-function extractFunctions($node, &$functions) {
+function extractFunctions($node, &$functions)
+{
     if ($node instanceof PhpParser\Node\Stmt\Function_) {
         $functions[] = $node->name->name;
     }
@@ -44,9 +45,12 @@ try {
     });
 
     // Output functions
-    echo "Functions:\n";
-    foreach ($functions as $function) {
-        echo $function . "\n";
+    for ($i = 0; $i < count($functions); $i++) {
+        echo $functions[$i];
+
+        if ($i < count($functions) - 1) {
+            echo ',';
+        }
     }
 
 } catch (PhpParser\Error $e) {
