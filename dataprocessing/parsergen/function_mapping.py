@@ -12,7 +12,7 @@ def detect_sql_vulnerability(code):
 
     return sql_syntax_count, sql_function_count, concatenated_string_count
 
-def detect_command_injection(code):
+def detect_xss_vulnerability(code):
     html_tag_pattern = re.compile(r'<\s*(?:script|iframe|embed|object|applet)\b', re.IGNORECASE)
     concatenated_string_pattern = re.compile(r'["\']\s*\.\s*["\']')
 
@@ -21,7 +21,7 @@ def detect_command_injection(code):
 
     return html_tag_count, 0, concatenated_string_count
 
-def detect_xss_vulnerability(code):
+def detect_command_injection(code):
     system_call_pattern = re.compile(r'\b(?:exec|system|shell_exec|passthru)\b', re.IGNORECASE)
     invoked_function_pattern = re.compile(r'\b(?:eval|create_function)\b', re.IGNORECASE)
     concatenated_string_pattern = re.compile(r'["\']\s*\.\s*["\']')
@@ -48,8 +48,8 @@ def main():
             code = file.read()
 
         sql_counts = detect_sql_vulnerability(code)
-        command_counts = detect_command_injection(code)
         xss_counts = detect_xss_vulnerability(code)
+        command_counts = detect_command_injection(code)
 
         matrix = [
             list(sql_counts),
@@ -57,7 +57,7 @@ def main():
             list(xss_counts)
         ]
 
-        vulnerability_labels = ["SQL Vulnerability", "Command Injection", "XSS Vulnerability"]
+        vulnerability_labels = ["SQL Vulnerability", "XSS Vulnerability", "Command Injection"]
 
         print("Vulnerability Matrix with Labels:")
         for label, row in zip(vulnerability_labels, matrix):
