@@ -2,6 +2,7 @@ import subprocess
 import os
 import re
 from pprint import pprint
+import csv
 
 js_getVARS_loc = os.path.join(os.path.abspath('parsergen'), "get_vars.js")
 php_getVARS_loc = os.path.join(os.path.abspath('parsergen'), "get_vars.php")
@@ -425,6 +426,7 @@ def preprocess(file_loc, lang):
             list(excessive_data_flags)
         ]
     
+    # Pad the matrix with zeros to make it equal sized matrix
     max_length = max(len(row) for row in matrix)
     for row in matrix:
         while len(row) < max_length:
@@ -442,6 +444,19 @@ def preprocess(file_loc, lang):
 
     # Todo: Save the combined matrix as I have instructed in the Teams 
     # Write the result to a CSV file
+    
+    X_Feature_1D = [item for column in zip(*matrix) for item in column]
+    Y_Feature_1D = compute_combined_matrix(matrix)
+
+    # Combine X-Feature and Y-Feature arrays into a single string
+    combined_data = ["{}:::::{}".format(','.join(map(str, X_Feature_1D)), ','.join(map(str, Y_Feature_1D)))]
+
+    # Write the combined data to a CSV file
+    with open('dataprocessing_dataset.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        # Write the combined data to the CSV file
+        writer.writerow(["X:::::Y"])
+        writer.writerows(combined_data)
 
 
 def main():
