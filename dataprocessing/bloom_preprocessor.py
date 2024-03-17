@@ -392,7 +392,6 @@ def compute_combined_matrix(matrix):
     combined_matrix = [1 if any(row) else 0 for row in matrix]
     return combined_matrix
 
-
 def preprocess(file_loc, lang):
     # Extract the variables from the code
     vars = execute_getvars(file_loc, lang)
@@ -432,22 +431,23 @@ def preprocess(file_loc, lang):
         while len(row) < max_length:
             row.append(0)
 
+    X_Feature_1D = [item for column in zip(*matrix) for item in column]
+    Y_Feature_1D = compute_combined_matrix(matrix)
+
     # Don't print when extracting to make this faster
 
-    # print("\nX-Feature:")
+    print("\nX-Feature:")
     # for row in matrix:
     #     print(row)
+    print(X_Feature_1D)
 
-    # print("\nY-Feature:")
-    # combined_matrix = compute_combined_matrix(matrix)
-    # print(combined_matrix)
+    print("\nY-Feature:")
+    #combined_matrix = compute_combined_matrix(matrix)
+    print(Y_Feature_1D)
 
     # Todo: Save the combined matrix as I have instructed in the Teams 
     # Write the result to a CSV file
     
-    X_Feature_1D = [item for column in zip(*matrix) for item in column]
-    Y_Feature_1D = compute_combined_matrix(matrix)
-
     # Combine X-Feature and Y-Feature arrays into a single string
     combined_data = ["{}:::::{}".format(','.join(map(str, X_Feature_1D)), ','.join(map(str, Y_Feature_1D)))]
 
@@ -470,6 +470,8 @@ def main():
     for file in js_samples:
         print(f"\nProcessing {file}...")
         preprocess(file, "js")
+
+    print("\nAll files processed.")
 
 
 if __name__ == "__main__":
