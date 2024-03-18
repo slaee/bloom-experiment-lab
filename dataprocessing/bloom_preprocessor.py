@@ -431,32 +431,32 @@ def preprocess(file_loc, lang):
         while len(row) < max_length:
             row.append(0)
 
+    print(tainted_snippets)
+
     X_Feature_1D = [item for column in zip(*matrix) for item in column]
     Y_Feature_1D = compute_combined_matrix(matrix)
 
-    # Don't print when extracting to make this faster
+    # # Don't print when extracting to make this faster
 
-    print("\nX-Feature:")
+    # print("\nX-Feature:")
     # for row in matrix:
     #     print(row)
-    print(X_Feature_1D)
+    # print(X_Feature_1D)
 
-    print("\nY-Feature:")
-    #combined_matrix = compute_combined_matrix(matrix)
-    print(Y_Feature_1D)
+    # print("\nY-Feature:")
+    # combined_matrix = compute_combined_matrix(matrix)
+    # print(combined_matrix)
 
     # Todo: Save the combined matrix as I have instructed in the Teams 
     # Write the result to a CSV file
-    
-    # Combine X-Feature and Y-Feature arrays into a single string
-    combined_data = ["{}:::::{}".format(','.join(map(str, X_Feature_1D)), ','.join(map(str, Y_Feature_1D)))]
+
+    combined_data = ",".join(map(str, X_Feature_1D)) + ":::::" + ",".join(map(str, Y_Feature_1D))
 
     # Write the combined data to a CSV file
-    with open('dataprocessing_dataset.csv', 'w', newline='') as csvfile:
+    with open('dataprocessing_dataset.csv', 'a', newline='') as csvfile:
         writer = csv.writer(csvfile)
         # Write the combined data to the CSV file
-        writer.writerow(["X:::::Y"])
-        writer.writerows(combined_data)
+        writer.writerow([combined_data])
 
 
 def main():
