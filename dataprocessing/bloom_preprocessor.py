@@ -18,7 +18,10 @@ def execute_getvars(file_loc, lang):
     else:
         return "Invalid language"
     result = subprocess.check_output(cmd, stderr=subprocess.PIPE).decode('utf-8')
-    return result
+    
+    result_list = result.split(',')
+    
+    return result_list
 
 def code_cleaner(filename):
     with open(filename, 'r') as f:
@@ -430,22 +433,22 @@ def preprocess(file_loc, lang):
     for row in matrix:
         while len(row) < max_length:
             row.append(0)
-
-    print(tainted_snippets)
+    
+    pprint(tainted_snippets)
 
     X_Feature_1D = [item for column in zip(*matrix) for item in column]
     Y_Feature_1D = compute_combined_matrix(matrix)
 
-    # # Don't print when extracting to make this faster
+    # Don't print when extracting to make this faster
 
-    # print("\nX-Feature:")
-    # for row in matrix:
-    #     print(row)
-    # print(X_Feature_1D)
+    print("\nX-Feature:")
+    for row in matrix:
+        print(row)
+    print(X_Feature_1D)
 
-    # print("\nY-Feature:")
-    # combined_matrix = compute_combined_matrix(matrix)
-    # print(combined_matrix)
+    print("\nY-Feature:")
+    combined_matrix = compute_combined_matrix(matrix)
+    print(combined_matrix)
 
     # Todo: Save the combined matrix as I have instructed in the Teams 
     # Write the result to a CSV file
