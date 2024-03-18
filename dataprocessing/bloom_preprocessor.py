@@ -139,7 +139,7 @@ def extract_tainted_snippets(references, tainted_variables, variables):
 
 def sqli_vulnerability(data):
     sql_syntax_pattern = re.compile(r'\b(?:SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|AND|OR)\b', re.IGNORECASE)
-    concatenated_string_pattern = re.compile(r'["\']\s*\.\s*["\']')
+    concatenated_string_pattern = re.compile(r'\b(?:SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|AND|OR)\b.*(?:\$\w+\s*\.\s*["\']\s*\.\s*\$\w+|\$\w+\s*\.\s*["\']|\["\']\s*\.\s*\$\w+|["\']\s*\.\s*\$\w+)', re.IGNORECASE)
 
     # Initialize counters for SQL injection patterns
     sql_syntax_count = 0
@@ -165,16 +165,16 @@ def sqli_vulnerability(data):
 
 
 def xss_vulnerability(data):
-    html_tag_pattern = re.compile(r'<(?:'
+    html_tag_pattern = re.compile(r'<\s*(?:'
         # Opening HTML tags for common XSS-vulnerable elements
-        r'script|img|iframe|frame|a|form|input|textarea|svg'
+        r'script|img|iframe|frame|a|form|input|textarea|svg|div|embed|object|video|audio|source|track'
         # Additional attributes for some tags
-        r'(?:\s+[a-z0-9_-]+(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^>\s]+))?)*\s*/?'
-        # Closing HTML tags for script, iframe, frame, a, form, textarea
-        r'|\/(?:script|iframe|frame|a|form|textarea)'
-        r')>'
+        r'(?:\s+[a-zA-Z0-9_-]+\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^>\s]+))?'
+        r'\s*/?>'
+    ')'
     )
-    concatenated_string_pattern = re.compile(r'["\']\s*\.\s*["\']')
+    concatenated_string_pattern = re.compile(r'<\s*(?:script|img|iframe|frame|a|form|input|textarea|svg|div|embed|object|video|audio|source|track).*?(?:\$\w+\s*\.\s*["\']\s*\.\s*\$\w+|\$\w+\s*\.\s*["\']|\["\']\s*\.\s*\$\w+|["\']\s*\.\s*\$\w+)', re.IGNORECASE)
+
 
     html_tag_count = 0
     concatenated_string_count = 0
@@ -200,7 +200,12 @@ def xss_vulnerability(data):
 def command_injection(data):
     system_call_pattern = re.compile(r'\b(?:exec|system|shell_exec|passthru)\b', re.IGNORECASE)
     invoked_function_pattern = re.compile(r'\b(?:eval|create_function)\b', re.IGNORECASE)
-    concatenated_string_pattern = re.compile(r'["\']\s*\.\s*["\']')
+    concatenated_string_pattern = re.compile(r'["\']\s*\.\s*["\']|'
+                                             r'\(\s*[\'"]\s*\.\s*[\w$]+\s*\)|'  # function_name (''.variable)
+                                             r'\(\s*[\'"]\s*\+\s*[\w$]+\s*\)|'  # function_name (''+variable)
+                                             r'\(\s*`.*?`\s*\)|'  # function_name (`${variable}`)
+                                             r'\(\s*\w+\s*\)',  # function_name (variable)
+                                             re.IGNORECASE)
 
     system_call_count = 0
     invoked_function_count = 0
@@ -282,6 +287,14 @@ def file_inclusion(data):
     js_dynamic_inclusion_pattern = re.compile(r'(import|require)\s*\(\s*.*?["\']\s*\+\s*(?:\$GET|\$POST|\$REQUEST|\$COOKIE)', re.IGNORECASE)
     js_unsanitized_inclusion_pattern = re.compile(r'(import|require)\s*\(\s*.*?["\']\s*\+\s*(?:\$GET|\$POST|\$REQUEST|\$COOKIE)', re.IGNORECASE)
 
+    # Concatenation patterns
+    concat_pattern = r'[\'"]\s*\.\s*[\'"]|\(\s*[\'"]\s*\.\s*[\w$]+\s*\)|' \
+                    r'\(\s*[\'"]\s*\+\s*[\w$]+\s*\)|\(\s*`.*?`\s*\)|\(\s*\w+\s*\)'
+
+    php_dynamic_inclusion_pattern = re.compile(f'{php_dynamic_inclusion_pattern.pattern}|{concat_pattern}', re.IGNORECASE)
+    php_unsanitized_inclusion_pattern = re.compile(f'{php_unsanitized_inclusion_pattern.pattern}|{concat_pattern}', re.IGNORECASE)
+    php_dynamic_path_pattern = re.compile(f'{php_dynamic_path_pattern.pattern}|{concat_pattern}', re.IGNORECASE)
+
     dynamic_inclusion_count = 0
     unsanitized_inclusion_count = 0
     php_allow_url_include_count = 0
@@ -301,6 +314,7 @@ def file_inclusion(data):
 
     return [dynamic_inclusion_count, unsanitized_inclusion_count, php_allow_url_include_count,
             php_dynamic_path_count, php_directory_traversal_count, php_sensitive_file_access_count]
+
 
 def authentication_bypass(data):
     weak_authentication_pattern = re.compile(r'(login|authenticate)\s*\(.*?\btrue\b', re.IGNORECASE)
@@ -420,7 +434,7 @@ def preprocess(file_loc, lang):
     # Get the tainted variables
     tainted_variables = get_tainted_variables(references)
     # Extract the tainted snippets
-    tainted_snippets = extract_tainted_snippets(references, tainted_variables)
+    tainted_snippets = extract_tainted_snippets(references, tainted_variables, vars)
     # Extract the map
     all_snippets = [(var, snippets) for var, snippets in tainted_snippets]
 
@@ -449,32 +463,34 @@ def preprocess(file_loc, lang):
         while len(row) < max_length:
             row.append(0)
     
-    pprint(tainted_snippets)
+    # pprint(tainted_snippets)
 
     X_Feature_1D = [item for column in zip(*matrix) for item in column]
     Y_Feature_1D = compute_combined_matrix(matrix)
 
     # Don't print when extracting to make this faster
 
-    print("\nX-Feature:")
-    for row in matrix:
-        print(row)
-    print(X_Feature_1D)
+    # print("\nX-Feature:")
+    # for row in matrix:
+    #     print(row)
+    # print(X_Feature_1D)
 
-    print("\nY-Feature:")
-    combined_matrix = compute_combined_matrix(matrix)
-    print(combined_matrix)
+    # print("\nY-Feature:")
+    # combined_matrix = compute_combined_matrix(matrix)
+    # print(combined_matrix)
 
     # Todo: Save the combined matrix as I have instructed in the Teams 
     # Write the result to a CSV file
 
     combined_data = ",".join(map(str, X_Feature_1D)) + ":::::" + ",".join(map(str, Y_Feature_1D))
 
+    # pprint(combined_data)
+
     # Write the combined data to a CSV file
     with open('dataprocessing_dataset.csv', 'a', newline='') as csvfile:
         writer = csv.writer(csvfile)
         # Write the combined data to the CSV file
-        writer.writerow([combined_data])
+        writer.writerow(combined_data.split(','))  # Split the string and directly write to the CSV file
 
 
 def main():
