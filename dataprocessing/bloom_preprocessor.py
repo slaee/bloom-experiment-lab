@@ -103,20 +103,36 @@ def get_tainted_variables(references):
     return list(tainted_variables)
 
 
-def extract_tainted_snippets(references, tainted_variables):
-    tainted_var_and_snippets = []
-
+def extract_tainted_snippets(references, tainted_variables, variables):
     regex_pattern = r'(?<![a-zA-Z0-9_]){}(?![a-zA-Z0-9_])'
 
+    # Function to update the tainted variables list
+    def update_tainted_variables(new_tainted_vars):
+        for var in new_tainted_vars:
+            if var not in tainted_variables:
+                tainted_variables.append(var)
+
+    # Iterate over each variable in the variables list
+    for var, snippets in references:
+        for snippet in snippets:
+            for variable in variables:
+                # Check if the variable is used in the snippet
+                if variable in snippet and variable != var:
+                    # Add the variable to the references if it's not already present
+                    if not any(variable == v[0] for v in references):
+                        references.append((variable, []))
+                    # Add the variable to the tainted variables list if it's not already present
+                    if variable not in tainted_variables:
+                        tainted_variables.append(variable)
+
+    # Extract tainted snippets for each tainted variable
+    tainted_var_and_snippets = []
     for tainted_var in tainted_variables:
-        tainted_snippets = set()  # Initialize a set to store tainted snippets for each variable so that we don't have duplicates
+        tainted_snippets = []
         for var, snippets in references:
-            for snippet in snippets:
-                if re.findall(regex_pattern.format(re.escape(tainted_var)), snippet, flags=re.IGNORECASE):
-                    tainted_snippets.add(snippet)  # Add the tainted snippet to the set
-                    break  # Stop searching for this snippet if a tainted variable is found
-        # Append variable and its tainted snippets
-        tainted_var_and_snippets.append((tainted_var, list(tainted_snippets)))  # Convert the set to a list and append to the list of tainted variables and snippets
+            if var == tainted_var:
+                tainted_snippets.extend(snippets)
+        tainted_var_and_snippets.append((tainted_var, tainted_snippets))
 
     return tainted_var_and_snippets
 
@@ -285,7 +301,6 @@ def file_inclusion(data):
 
     return [dynamic_inclusion_count, unsanitized_inclusion_count, php_allow_url_include_count,
             php_dynamic_path_count, php_directory_traversal_count, php_sensitive_file_access_count]
-
 
 def authentication_bypass(data):
     weak_authentication_pattern = re.compile(r'(login|authenticate)\s*\(.*?\btrue\b', re.IGNORECASE)
