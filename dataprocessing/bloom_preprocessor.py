@@ -504,7 +504,7 @@ def preprocess(file_loc, lang):
     cmd_injection_flags = command_injection(all_snippets)
     prototype_pollution_flags = prototype_pollution(all_snippets)
     file_inclusion_flags = file_inclusion(all_snippets)
-    authentication_bypass_flags = authentication_bypass(all_snippets)
+    validation_bypass_flags = validation_bypass(all_snippets)
     excessive_data_flags = excessive_data(all_snippets)
 
 
@@ -514,7 +514,7 @@ def preprocess(file_loc, lang):
             list(cmd_injection_flags),
             list(prototype_pollution_flags),
             list(file_inclusion_flags),
-            list(authentication_bypass_flags),
+            list(validation_bypass),
             list(excessive_data_flags)
         ]
     
