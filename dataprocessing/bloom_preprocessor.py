@@ -373,40 +373,44 @@ def file_inclusion(data):
             php_dynamic_path_count, php_directory_traversal_count, php_sensitive_file_access_count]
 
 
-def authentication_bypass(data):
-    weak_authentication_pattern = re.compile(r'(login|authenticate)\s*\(.*?\btrue\b', re.IGNORECASE)
-    hardcoded_credentials_pattern = re.compile(r'(login|authenticate)\s*\(.*?[\'"].*?[\'"]\s*,\s*[\'"].*?[\'"]\s*\)', re.IGNORECASE)
-    bypass_logic_pattern = re.compile(r'(if|else\s*if)\s*\(.*?authenticated\s*[=!]=\s*true', re.IGNORECASE)
-    commented_out_authentication_pattern = re.compile(r'/\*.*?(login|authenticate).*?\btrue\b.*?\*/', re.IGNORECASE)
+def validation_bypass(data):
+    # PHP patterns
+    php_weak_type_comparison_pattern = re.compile(r'\$\w+\s*==\s*[\'"].*?[\'"]', re.IGNORECASE)
+    php_inadequate_filtering_pattern = re.compile(r'\$_(GET|POST|REQUEST)\[[\'"].*?[\'"]\]\s*==\s*[\'"].*?[\'"]', re.IGNORECASE)
 
-    # Initialize counters for authentication bypass patterns
-    weak_authentication_count = 0
-    hardcoded_credentials_count = 0
-    bypass_logic_count = 0
-    commented_out_authentication_count = 0
+    # JavaScript patterns
+    js_client_side_validation_pattern = re.compile(r'function\s+validateForm\s*\(.*?\)\s*{\s*return\s+true;', re.IGNORECASE)
+    js_insecure_checks_pattern = re.compile(r'\bif\s*\(.*?\)\s*{.*?}', re.IGNORECASE)
+    js_insufficient_validation_pattern = re.compile(r'document\.getElementById\([\'"].*?[\'"]\)\.value\s*===\s*[\'"].*?[\'"]', re.IGNORECASE)
+
+    # Initialize counters for validation bypass patterns
+    php_weak_type_comparison_count = 0
+    php_inadequate_filtering_count = 0
+    js_client_side_validation_count = 0
+    js_insecure_checks_count = 0
+    js_insufficient_validation_count = 0
 
     # Combine snippets from all categories into a single list
     all_snippets = [snippet for _, snippets in data for snippet in snippets]
 
-    # Iterate over each snippet and detect authentication bypass vulnerabilities
+    # Iterate over each snippet and detect validation bypass vulnerabilities
     for snippet in all_snippets:
-        if re.search(weak_authentication_pattern, snippet):
-            weak_authentication_count += 1
-        if re.search(hardcoded_credentials_pattern, snippet):
-            hardcoded_credentials_count += 1
-        if re.search(bypass_logic_pattern, snippet):
-            bypass_logic_count += 1
-        if re.search(commented_out_authentication_pattern, snippet):
-            commented_out_authentication_count += 1
+        php_weak_type_comparison_count += len(re.findall(php_weak_type_comparison_pattern, snippet))
+        php_inadequate_filtering_count += len(re.findall(php_inadequate_filtering_pattern, snippet))
+        js_client_side_validation_count += len(re.findall(js_client_side_validation_pattern, snippet))
+        js_insecure_checks_count += len(re.findall(js_insecure_checks_pattern, snippet))
+        js_insufficient_validation_count += len(re.findall(js_insufficient_validation_pattern, snippet))
 
     # Convert counts to 1 if vulnerabilities are detected, else keep them as 0
-    weak_authentication_count = 1 if weak_authentication_count > 0 else 0
-    hardcoded_credentials_count = 1 if hardcoded_credentials_count > 0 else 0
-    bypass_logic_count = 1 if bypass_logic_count > 0 else 0
-    commented_out_authentication_count = 1 if commented_out_authentication_count > 0 else 0
+    php_weak_type_comparison_count = 1 if php_weak_type_comparison_count > 0 else 0
+    php_inadequate_filtering_count = 1 if php_inadequate_filtering_count > 0 else 0
+    js_client_side_validation_count = 1 if js_client_side_validation_count > 0 else 0
+    js_insecure_checks_count = 1 if js_insecure_checks_count > 0 else 0
+    js_insufficient_validation_count = 1 if js_insufficient_validation_count > 0 else 0
 
     # Return a single list containing the counts of patterns found
-    return [weak_authentication_count, hardcoded_credentials_count, bypass_logic_count, commented_out_authentication_count]
+    return [php_weak_type_comparison_count, php_inadequate_filtering_count,
+            js_client_side_validation_count, js_insecure_checks_count, js_insufficient_validation_count]
 
 def excessive_data(data):
     verbose_error_messages_pattern = re.compile(r'(error|exception|warning):\s*(.)', re.IGNORECASE)
