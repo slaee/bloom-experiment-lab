@@ -78,7 +78,7 @@ def extract_vars_references(vars, code):
 
 def check_variable_usage(code_snippet):
     # php regex rules for catching tainted variables with user input
-    php_pattern = re.compile(r'\b(?:php|http)://|(?:(\$_(?:GET|POST|REQUEST|SERVER|COOKIE|ENV|FILES)\b)|\b(?:GET|POST|REQUEST|SERVER|COOKIE|ENV|FILES)\b)\b')
+    php_pattern = re.compile(r'\b(?:php|http|https|ftp)://|(?:(\$_(?:GET|POST|REQUEST|SERVER|COOKIE|ENV|FILES)\b)|\b(?:GET|POST|REQUEST|SERVER|COOKIE|ENV|FILES)\b)\b')
     # pure js regex rules for catching tainted variables with user input
     js_pattern = re.compile(r'(?:req|request)\.(?:body|params|query|headers)', re.IGNORECASE)
     # express js regex rules for catching tainted variables with user input

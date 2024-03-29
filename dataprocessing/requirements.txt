@@ -5,3 +5,7 @@ numpy
 pandas
 torch-geometric
 matplotlib
+tqdm
+keras
+networkx
+seaborn
