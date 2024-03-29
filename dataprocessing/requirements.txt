@@ -1,3 +1,7 @@
 scikit-learn
 transformers
 torch
+numpy
+pandas
+torch-geometric
+matplotlib
