@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -85,5 +86,49 @@ with torch.no_grad():
     accuracy = correct / total
     print("Test Accuracy:", accuracy)
 
+# Preprocess input function
+def preprocess_input(input_string):
+    # Convert input string to lowercase
+    input_string = input_string.lower()
     
+    # Tokenize input string (split by whitespace and special characters)
+    tokens = re.findall(r"[\w']+|[.,!?;]", input_string)
+    
+    # Construct feature vector based on tokens
+    features = torch.zeros(num_features)  # Initialize feature vector with zeros
+    for token in tokens:
+        # Update feature vector based on token presence
+        if token in df.columns:
+            features[df.columns.get_loc(token)] = 1  # Set the corresponding feature to 1 if token exists in the dataset
+    return features
+
+# Define function to predict vulnerabilities
+def predict_vulnerability(input_string):
+    # Preprocess input
+    input_features = preprocess_input(input_string)
+    
+    # Perform prediction
+    model.eval()
+    with torch.no_grad():
+        output = model(input_features.unsqueeze(0), edge_index)  # Unsqueeze to add batch dimension
+        pred_probs = torch.sigmoid(output)
+        predicted_classes = (pred_probs > 0.5).int().squeeze().tolist()
+    return predicted_classes
+
+# Define function to map predicted output to vulnerability types
+def map_to_vulnerability(predicted_classes):
+    vulnerabilities = ['SQL Injection', 'XSS', 'CSRF', 'Command Injection', 'Path Traversal', 'Remote Code Execution']
+    detected_vulnerabilities = [vulnerabilities[i] for i, pred in enumerate(predicted_classes) if pred == 1]
+    return detected_vulnerabilities
+
+# Sample input
+input_code = "$input = $_GET['id']; $sql = `SELECT * FROM users WHERE id = ${input}`"
+
+# Predict vulnerabilities
+predicted_classes = predict_vulnerability(input_code)
+
+# Map predicted output to vulnerability types
+detected_vulnerabilities = map_to_vulnerability(predicted_classes)
+
+print("Detected Vulnerabilities:", detected_vulnerabilities)
 
